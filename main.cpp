@@ -1,4 +1,4 @@
-#include <D:\Code\Project\lab1\lab2\clss.cpp>
+#include <clss.cpp>
 #include <cstring>
 #include <math.h>
 #include <ctime>
