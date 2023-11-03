@@ -201,9 +201,9 @@ void Game::newtick(int a)
     switch (random(0,1))
     {
         case 0:
+            break;
         case 1:
             cout<<endl<<arr[random(0 , size(arr))];
-            cout<<"here";
             break;
     }
     if (a != 0)      //каждый tickcount тик восстанавливает стамину(если значение не равно нулю)
