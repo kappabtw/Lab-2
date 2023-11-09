@@ -204,7 +204,7 @@ void Game::newtick(int a = 0)
     Player.calculate(0);
     if (Player.getstamina() <= 0)
     {
-        endgame();
+        endgame(0);
     }
     switch (random(0,1))
     {
@@ -227,7 +227,7 @@ void Game::newtick(int a = 0)
     inf();
 }
 
-void Game::endgame(int code)
+void Game::endgame(int code = 0)
 {
     switch (code)
     {
@@ -348,7 +348,7 @@ zeroevent::zeroevent(string ename):event(ename, 0)
 {   
     num++;
     arr2 = new string[num];
-    for (int i = 0; i < num - 1; i++)
+    for (int i = 0; i < (num - 1); i++)
         arr2[i] = arr[i];
     arr2[num - 1] = name;
     delete[] arr;

@@ -41,7 +41,7 @@ class Game {
     public: 
         Game(int);
         void newtick(int); //создаёт новый тик
-        void endgame(int = 0); //конец игры, todo добавить несколько концовок
+        void endgame(int); //конец игры, todo добавить несколько концовок
     private:
         int ticks; //всего тиков
         int tickcount; //через какое количество тиков восстанавливается стамина
