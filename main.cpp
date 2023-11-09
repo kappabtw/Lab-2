@@ -1,19 +1,19 @@
 #include <D:\Code\Project\lab1\lab2\Lab2\clss.cpp>
 #include <cstring>
 #include <math.h>
-#include <ctime>
 
-//настройка локаций и вещей
+//инициализация
 
 location kitchen{"Kitchen"};
 itemINT gre{"Grechka dada", 2};
 actionSTA wakeup{"Wakeup", 0, 0, 0};
-zeroevent wwev{"w"};
-zeroevent fef{"eefefef"};
-zeroevent geef{"wefwegwgwe"};
-void settings()
-{
-}
+zeroevent event1{"event1"};
+zeroevent event2{"event2"};
+zeroevent event3{"event3"};
+zeroevent event4{"event4"};
+zeroevent event5{"event5"};
+zeroevent event6{"event6"};
+zeroevent event7{"event7"};
 
 void stats()
 {
@@ -114,18 +114,10 @@ void start()
             break;
     }
     wakeup.donew();
-    /*game.newtick(0);
-    game.newtick(0);
-    game.newtick(0);
-    game.newtick(0);
-    game.newtick(0);
-    game.newtick(0);*/
 }
 
 int main()
 {
-    srand(time(0));
-    settings();
     stats();
     start();
     game.endgame(1);

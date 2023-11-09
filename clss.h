@@ -39,10 +39,7 @@ class Person {      //todo убрать половину функций - (+-)
 
 class Game {
     public: 
-        Game(int b):tickcount(b)
-        {
-            ticks = 0;
-        }
+        Game(int);
         void newtick(int); //создаёт новый тик
         void endgame(int = 0); //конец игры, todo добавить несколько концовок
     private:

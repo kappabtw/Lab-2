@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include <typeinfo>
+#include <ctime>
 using namespace std;
 
 int res = 0;
@@ -13,6 +14,7 @@ int num = 0;
 
 Person Player;
 Game game{4};
+
 
 int random(int a, int b)
 {
@@ -189,8 +191,14 @@ void Person::calculate(int dosome)
 }
 
 
+Game::Game(int b):tickcount(b)
+{
+    ticks = 0;
+    srand(time(0));
+}
 
-void Game::newtick(int a)
+
+void Game::newtick(int a = 0)
 {
     Player.getsbuff();
     Player.getibuff();
@@ -201,10 +209,11 @@ void Game::newtick(int a)
     }
     switch (random(0,1))
     {
-        case 0:
-            break;
         case 1:
-            cout<<endl<<arr[random((0),(num - 1))];
+            cout<<"...";
+            break;
+        case 0:
+            cout<<endl<<arr[(random((0),(num - 1)))];
             break;
     }
     if (a != 0)      //каждый tickcount тик восстанавливает стамину(если значение не равно нулю)
@@ -218,7 +227,6 @@ void Game::newtick(int a)
     }
     inf();
 }
-
 
 void Game::endgame(int code)
 {
@@ -335,7 +343,7 @@ void action::pass()
 int action::getvalue()
 {
     return value;
-}   
+}  
 
 zeroevent::zeroevent(string ename):event(ename, 0)
 {   
@@ -346,6 +354,4 @@ zeroevent::zeroevent(string ename):event(ename, 0)
     arr2[num - 1] = name;
     delete[] arr;
     arr = arr2;
-    for (int i = 0; i < num; i++) //для проверки
-      cout << "AS[" << i << "] = " << arr[i] << ::endl;
 }
