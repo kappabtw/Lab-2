@@ -92,10 +92,9 @@ void stats()
 
 void start()
 {
-    res = random(1, 7);
+    res = random(2, 7);
     switch (res)
     {
-        case 1:
         case 2:
         case 3:
             wakeup.chvalue(4);
