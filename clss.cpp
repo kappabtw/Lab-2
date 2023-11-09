@@ -9,7 +9,6 @@ int res = 0;
 string in;
 string* arr;
 string* arr2;
-char buf[10];
 int num = 0;
 
 Person Player;
