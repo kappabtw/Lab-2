@@ -1,4 +1,4 @@
-#include <clss.h>
+#include <D:\Code\Project\lab1\lab2\Lab2\clss.h>
 #include <iostream>
 #include <sstream>
 #include <typeinfo>
@@ -24,7 +24,7 @@ int random(int a, int b)
 void inf()
 {
     cout<<"\n----------------------------------------"<<endl;
-    cout<<"[STA - "<<Player.getstamina()<<"] [INT - "<<Player.getInte()<<"] [STR - "<<Player.getStre()<<"] [EDU - "<<Player.getEndu()<<"]"<<endl;
+    cout<<"[STA - "<<Player.getstamina()<<"] [INT - "<<Player.getstat("INT")<<"] [STR - "<<Player.getstat("STR")<<"] [EDU - "<<Player.getstat("EDU")<<"]"<<endl;
     cout<<"----------------------------------------"<<endl;
 }
 
@@ -50,60 +50,76 @@ string Person::getName()
     return nameperson;
 }
 
-void Person::plusInte(int num)
+void Person::plusstat(int value, string stat) //(int) value, (str) stat
 {
-    inte += num;
-    if (inte > 5)
+    if (stat == "INT")
     {
-        megastat += (inte - 5);
-        inte = 5;
+        inte += value;
+        if (inte > 5)
+            {
+                inte = 5;
+            }
+        if (inte < 1)
+        {
+            inte = 1;
+        }
+        return;
     }
-
-    if (inte < 1)
+    if (stat == "STR")
     {
-        minstat += (1 - inte);
-        inte = 1;
+        stre += value;
+        if (stre > 5)
+            {
+                stre = 5;
+            }
+        if (stre < 1)
+        {
+            stre = 1;
+        }
+        return;
     }
+    if (stat == "EDU")
+    {
+        
+        endu += value;
+        if (endu > 5)
+            {
+                endu = 5;
+            }
+        if (endu < 1)
+        {
+            endu = 1;
+        }
+        return;
+    }
+    if (stat == "STA")
+    {
+        stamina += value;
+        return;
+    }
+    cerr<<"Wrong in plusstat("<<stat<<"), returned 0";
 }
 
-void Person::plusStre(int num)
+int Person::getstat(string stat)
 {
-    stre += num;
-    if (stre > 5)
+    if (stat == "INT")
     {
-        megastat += (stre - 5);
-        stre = 5;
+        return inte;
     }
-    if (inte < 1)
+    if (stat == "STR")
     {
-        minstat += (1 - stre);
-        stre = 1;
+        return stre;
     }
-}
-
-void Person::plusEndu(int num)
-{
-    endu += num;
-    if (inte > 5)
+    if (stat == "EDU")
     {
-        megastat += (endu - 5);
-        endu = 5;
+        return endu;
     }
-    if (endu < 1)
+    if (stat == "STA")
     {
-        minstat += (1 - endu);
-        endu = 1;
+        return stamina;
     }
-}
-
-int Person::getInte()
-{
-    return inte;
-}
-
-int Person::getStre()
-{
-    return stre;
+    cerr<<"Wrong in getstat("<<stat<<"), returned 0";
+    return 0;
 }
 
 int Person::getstamina()
@@ -124,17 +140,6 @@ int Person::getebuff()
     }
     return bufendu;
 }
-
-void Person::plusstamina(int a)
-{
-    stamina+=a;
-}
-
-int Person::getEndu()
-{
-    return endu;
-}
-
 
 void Person::getibuff()
 {
@@ -220,7 +225,7 @@ void Game::newtick(int a = 0)
         ticks++;
         if (ticks == tickcount)
         {
-            Player.plusstamina(Player.getebuff());
+            Player.plusstat(Player.getebuff(), "STA");
             ticks = 0;
         }
     }
@@ -254,70 +259,17 @@ string location::Name()
     return locationname;
 }
 
-void itemINT::use()
+void item::use()
 {
-    Player.plusInte(value);
+    Player.plusstat(value, stat);
     game.newtick(0);
 }
 
-void itemSTR::use()
+bool action::donew()
 {
-    Player.plusStre(value);
-    game.newtick(0);
-}
-
-void itemEDU::use()
-{
-    Player.plusEndu(value);
-    game.newtick(0);
-}
-
-void itemSTA::use()
-{
-    Player.plusstamina(value);
-    game.newtick(0);
-}
-
-bool actionINT::donew()
-{
-    Player.plusInte(value);
+    Player.plusstat(value , stat);
     game.newtick(active);
-    if (needstat << Player.getInte())
-    {
-        return false;
-    }
-    return true;
-}
-
-
-bool actionSTR::donew()
-{
-    Player.plusStre(value);
-    game.newtick(active);
-    if (needstat << Player.getStre())
-    {
-        return false;
-    }
-    return true;
-}
-
-bool actionEDU::donew()
-{
-    Player.plusEndu(value);
-    game.newtick(active);
-    if (needstat << Player.getEndu())
-    {
-        return false;
-    }
-    return true;
-}
-
-
-bool actionSTA::donew()
-{
-    Player.plusstamina(value);
-    game.newtick(active);
-    if (needstat << Player.getstamina())
+    if (needstat << Player.getstat(stat))
     {
         return false;
     }

@@ -1,20 +1,15 @@
 #include <iostream>
 using namespace std;
 
-class Person {      //todo убрать половину функций - (+-)
-    public:         //todo сделать универсальную plusstat(int, stat) 
+class Person {  
+    public:          
         void setName(string);   
         string getName();
-        int getEndu(); //chars
-        void plusInte(int);
-        void plusStre(int);
-        void plusEndu(int);
-        int getInte(); //chars
-        int getStre(); //chars
         void calculate(int);
         int getbase();
+        int getstat(string);
         int getstamina();
-        void plusstamina(int);
+        void plusstat(int, string);
         int getebuff();
         void getibuff();
         void getsbuff();
@@ -25,8 +20,6 @@ class Person {      //todo убрать половину функций - (+-)
         int endu = 0;
         int inte = 0;
         int stre = 0;
-        int megastat = 0;
-        int minstat = 0; //чтобы балансировать игру(?на будущее?)
         int bufinte = 0;
         int bufendu = 1;//кол-во восстанавливаемой стамины
         int bufstre = 0;
@@ -59,7 +52,7 @@ class location
 
 class event//неподконтрольное событие, которое может случается во время newtick
 {
-    public: //можно было бы добавить динамический массив, но я совсем забыл про лабу, поэтому пытаюсь быстро её дописать(todo)
+    public: 
     event(string ename, int evalue):name(ename), value(evalue)
     {}
     protected:
@@ -81,15 +74,17 @@ class item // item newitem(name, value)
     public:
         item(string iname, int ivalue): name(iname), value(ivalue)
         {}
+        void use();
     protected:
+        string stat;
         string name;
         int value;
 };
 
 class action // action newaction(name,value,needstat) 
-//todo добавить конструктор(done) и виртуальные функции для action и item
 {          
     public:
+        bool donew();
         int getvalue();
         void chvalue(int);
         void act(); //делает дейсвтие пассивным(выносливость всё ещё тратиться)
@@ -98,6 +93,7 @@ class action // action newaction(name,value,needstat)
         {} 
     protected:
         string name;
+        string stat;
         int value = 0;
         int needstat = 0;
         int active = 1; //по умолчанию действие увеличивает кол-во тиков на 1;если значение равно 0, то действие пассивное
@@ -107,40 +103,45 @@ class actionINT : public action
 {
     public:
         actionINT(string iname, int ivalue, int ineedstat, int iactive): action(iname,ivalue,ineedstat,iactive) //name value needstat active
-        {}
-        bool donew();
+        {
+            stat = "INT";
+        }
 };
 
 class actionSTR : public action
 {
      public:
         actionSTR(string iname, int ivalue, int ineedstat, int iactive): action(iname,ivalue,ineedstat,iactive) //name value needstat active
-        {}
-        bool donew();
+        {
+            stat = "STR";
+        }
 };
 
 class actionEDU : public action
 {
      public:
         actionEDU(string iname, int ivalue, int ineedstat, int iactive): action(iname,ivalue,ineedstat,iactive) //name value needstat active
-        {}
-        bool donew();
+        {
+            stat = "EDU";
+        }
 };
 
 class actionSTA : public action
 {
      public: 
         actionSTA(string iname, int ivalue, int ineedstat, int iactive): action(iname,ivalue,ineedstat,iactive) //name value needstat active
-        {}
-        bool donew();
+        {
+            stat = "STA";
+        }
 };
 
 class itemINT : public item
 {   
     public:
         itemINT(string iname, int ivalue):item(iname,ivalue)
-        {}
-        void use();
+        {
+            stat = "INT";
+        }
       
 };
 
@@ -148,22 +149,25 @@ class itemSTR : public item
 {
     public:
         itemSTR(string iname, int ivalue):item(iname,ivalue)
-        {}
-        void use();
+        {
+            stat = "STR";
+        }
 };
 
 class itemEDU : public item
 {
     public:
             itemEDU(string iname, int ivalue):item(iname,ivalue)
-            {}
-            void use();
+            {
+                stat = "EDU";
+            }
 };
 
 class itemSTA : public item
 {
     public:
         itemSTA(string iname, int ivalue):item(iname,ivalue)
-        {}
-        void use();
+        {
+            stat = "STA";
+        }
 };

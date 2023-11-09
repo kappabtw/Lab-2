@@ -34,7 +34,7 @@ void stats()
             case 3:
             case 4:
             case 5:
-                Player.plusInte(res);
+                Player.plusstat(res, "INT");
                 freestat -= res;
                 chars++;
                 break;
@@ -56,7 +56,7 @@ void stats()
             case 4:
                 if ((freestat - res)<= 5)
                 {
-                    Player.plusStre(res);
+                    Player.plusstat(res, "STR");
                     freestat -= res;
                     chars++;
                     break;
@@ -69,7 +69,7 @@ void stats()
             case 5:
                 if (freestat>5)
                 {
-                    Player.plusStre(res);
+                    Player.plusstat(res, "STR");
                     freestat -= res;
                     chars++;
                     break;
@@ -85,7 +85,7 @@ void stats()
                 break;
         }   
     }
-    Player.plusEndu(freestat);
+    Player.plusstat(freestat, "STA");
     Player.startstamina();
     game.newtick(0);
 }
