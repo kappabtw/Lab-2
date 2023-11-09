@@ -1,4 +1,4 @@
-#include <D:\Code\Project\lab1\lab2\Lab2\clss.cpp>
+#include <clss.cpp>
 #include <math.h>
 
 //инициализация

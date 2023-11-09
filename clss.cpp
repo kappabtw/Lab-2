@@ -1,4 +1,4 @@
-#include <D:\Code\Project\lab1\lab2\Lab2\clss.h>
+#include <clss.h>
 #include <iostream>
 #include <sstream>
 #include <typeinfo>
