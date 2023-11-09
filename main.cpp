@@ -1,4 +1,4 @@
-#include <clss.cpp>
+#include <D:\Code\Project\lab1\lab2\Lab2\clss.cpp>
 #include <cstring>
 #include <math.h>
 #include <ctime>
@@ -8,6 +8,9 @@
 location kitchen{"Kitchen"};
 itemINT gre{"Grechka dada", 2};
 actionSTA wakeup{"Wakeup", 0, 0, 0};
+zeroevent wwev{"w"};
+zeroevent fef{"eefefef"};
+zeroevent geef{"wefwegwgwe"};
 void settings()
 {
 }
@@ -111,6 +114,12 @@ void start()
             break;
     }
     wakeup.donew();
+    /*game.newtick(0);
+    game.newtick(0);
+    game.newtick(0);
+    game.newtick(0);
+    game.newtick(0);
+    game.newtick(0);*/
 }
 
 int main()
@@ -119,5 +128,5 @@ int main()
     settings();
     stats();
     start();
-    game.endgame();
+    game.endgame(1);
 }

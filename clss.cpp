@@ -1,4 +1,4 @@
-#include <clss.h>
+#include <D:\Code\Project\lab1\lab2\Lab2\clss.h>
 #include <iostream>
 #include <sstream>
 #include <typeinfo>
@@ -6,12 +6,13 @@ using namespace std;
 
 int res = 0;
 string in;
-
+string* arr;
+string* arr2;
+char buf[10];
+int num = 0;
 
 Person Player;
-Game game;
-
-string arr[10] {};
+Game game{4};
 
 int random(int a, int b)
 {
@@ -203,7 +204,7 @@ void Game::newtick(int a)
         case 0:
             break;
         case 1:
-            cout<<endl<<arr[random(0 , size(arr))];
+            cout<<endl<<arr[random((0),(num - 1))];
             break;
     }
     if (a != 0)      //каждый tickcount тик восстанавливает стамину(если значение не равно нулю)
@@ -219,17 +220,24 @@ void Game::newtick(int a)
 }
 
 
-void Game::endgame()
+void Game::endgame(int code)
 {
-    cout<<"Not enough stamina for life. You dead. Input something to exit([1]Info)."; 
-    res = input();
-    switch(res)
+    switch (code)
     {
         case 1:
-            cout<<"\nInfo\n";
-            cout<<Player.getstamina()<<endl<<Player.getbase();
-            cin>>res;
+            cout<<"\nIn development\n";
+            break;
+        default:    
+            cout<<"\nNot enough stamina for life. You dead. Input something to exit([1]Info).\n"; 
+            res = input();
+            switch(res)
+            {
+                case 1:
+                    cout<<"\nInfo\n";
+                    cout<<Player.getstamina()<<endl<<Player.getbase()<<endl;
+            }
     }
+    system("pause");
     exit(0);
 }
 
@@ -327,11 +335,17 @@ void action::pass()
 int action::getvalue()
 {
     return value;
-}
+}   
 
-event::event(string ename, int evalue):name(ename), value(evalue)
+zeroevent::zeroevent(string ename):event(ename, 0)
 {   
-    if (num<<10)
-        arr[num] = name;
-        num++;
+    num++;
+    arr2 = new string[num];
+    for (int i = 0; i < num - 1; i++)
+        arr2[i] = arr[i];
+    arr2[num - 1] = name;
+    delete[] arr;
+    arr = arr2;
+    for (int i = 0; i < num; i++) //для проверки
+      cout << "AS[" << i << "] = " << arr[i] << ::endl;
 }
