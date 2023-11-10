@@ -315,7 +315,10 @@ zeroevent::zeroevent(string ename):event(ename, 0)
 //конструкторы
 item::item(string iname, int ivalue): name(iname), value(ivalue){}
 
-action::action(string iname, int ivalue, int ineedstat): name(iname), value(ivalue), needstat(ineedstat){} 
+action::action(string iname, int ivalue, int ineedstat): name(iname), value(ivalue), needstat(ineedstat)
+{
+    active = 1;
+} 
 
 actionINT::actionINT(string iname, int ivalue, int ineedstat = 0): action(iname,ivalue,ineedstat) //name value needstat active
 {
@@ -360,3 +363,17 @@ itemSTA::itemSTA(string iname, int ivalue):item(iname,ivalue)
 location::location(string name):locationname(name){}
 
 event::event(string ename, int evalue):name(ename), value(evalue){}
+
+Person::Person()
+{
+    endu = 0;
+    inte = 0;
+    stre = 0;
+    bufinte = 0;
+    bufendu = 1;
+    bufstre = 0;
+    stamina = 0;
+    basestamina = 0;
+    base = 0;
+}
+

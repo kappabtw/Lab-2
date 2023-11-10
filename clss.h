@@ -2,7 +2,8 @@
 using namespace std;
 
 class Person {  
-    public:          
+    public:       
+        Person();   
         void setName(string);   
         string getName();
         void calculate(int);
@@ -17,15 +18,15 @@ class Person {
 
     private: 
         string nameperson;// имя     
-        int endu = 0;
-        int inte = 0;
-        int stre = 0;
-        int bufinte = 0;
-        int bufendu = 1;//кол-во восстанавливаемой стамины
-        int bufstre = 0;
-        int stamina = 0;
-        int basestamina = 0;
-        int base = 0;
+        int endu;
+        int inte;
+        int stre;
+        int bufinte;
+        int bufendu;//кол-во восстанавливаемой стамины
+        int bufstre;
+        int stamina;
+        int basestamina;
+        int base;
 
 
 };
@@ -90,9 +91,9 @@ class action // action newaction(name,value,needstat)
     protected:
         string name;
         string stat;
-        int value = 0;
-        int needstat = 0;
-        int active = 1; //по умолчанию действие увеличивает кол-во тиков на 1;если значение равно 0, то действие пассивное
+        int value;
+        int needstat;
+        int active; //по умолчанию действие увеличивает кол-во тиков на 1;если значение равно 0, то действие пассивное
 };
 
 class actionINT : public action

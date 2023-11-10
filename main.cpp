@@ -25,7 +25,7 @@ void stats()
     int chars = 0;
     cout<< "Enter your nickname:\n" << endl;
     getline(cin, in);
-    while (in != "")
+    while (in == "")
     {
         cin.clear();
         getline(cin,in);
