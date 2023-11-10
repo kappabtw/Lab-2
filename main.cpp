@@ -5,7 +5,7 @@
 
 location kitchen{"Kitchen"};
 itemINT gre{"Grechka dada", 2};
-actionSTA wakeup{"Wakeup", 0, 0, 0};
+actionSTA wakeup{"Wakeup", 0, 0};
 zeroevent event1{"event1"};
 zeroevent event2{"event2"};
 zeroevent event3{"event3"};
