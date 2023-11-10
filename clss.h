@@ -89,7 +89,7 @@ class action // action newaction(name,value,needstat)
         void chvalue(int);
         void act(); //делает дейсвтие пассивным(выносливость всё ещё тратиться)
         void pass(); //делает действие активным
-        action(string iname, int ivalue, int ineedstat, int iactive): name(iname), value(ivalue), needstat(ineedstat), active(iactive)// name value needstat active
+        action(string iname, int ivalue, int ineedstat): name(iname), value(ivalue), needstat(ineedstat)// name value needstat active
         {} 
     protected:
         string name;
@@ -102,7 +102,7 @@ class action // action newaction(name,value,needstat)
 class actionINT : public action
 {
     public:
-        actionINT(string iname, int ivalue, int ineedstat, int iactive): action(iname,ivalue,ineedstat,iactive) //name value needstat active
+        actionINT(string iname, int ivalue, int ineedstat, int iactive): action(iname,ivalue,ineedstat) //name value needstat active
         {
             stat = "INT";
         }
@@ -111,7 +111,7 @@ class actionINT : public action
 class actionSTR : public action
 {
      public:
-        actionSTR(string iname, int ivalue, int ineedstat, int iactive): action(iname,ivalue,ineedstat,iactive) //name value needstat active
+        actionSTR(string iname, int ivalue, int ineedstat, int iactive): action(iname,ivalue,ineedstat) //name value needstat active
         {
             stat = "STR";
         }
@@ -120,7 +120,7 @@ class actionSTR : public action
 class actionEDU : public action
 {
      public:
-        actionEDU(string iname, int ivalue, int ineedstat, int iactive): action(iname,ivalue,ineedstat,iactive) //name value needstat active
+        actionEDU(string iname, int ivalue, int ineedstat, int iactive): action(iname,ivalue,ineedstat) //name value needstat active
         {
             stat = "EDU";
         }
@@ -129,7 +129,7 @@ class actionEDU : public action
 class actionSTA : public action
 {
      public: 
-        actionSTA(string iname, int ivalue, int ineedstat, int iactive): action(iname,ivalue,ineedstat,iactive) //name value needstat active
+        actionSTA(string iname, int ivalue, int ineedstat, int iactive): action(iname,ivalue,ineedstat) //name value needstat active
         {
             stat = "STA";
         }

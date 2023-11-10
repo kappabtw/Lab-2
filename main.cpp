@@ -14,6 +14,11 @@ zeroevent event5{"event5"};
 zeroevent event6{"event6"};
 zeroevent event7{"event7"};
 
+void settings()
+{
+    wakeup.pass();
+}
+
 void stats()
 {
     int freestat = 10;
@@ -85,9 +90,9 @@ void stats()
                 break;
         }   
     }
-    Player.plusstat(freestat, "STA");
+    Player.plusstat(freestat, "EDU");
     Player.startstamina();
-    game.newtick(0);
+    game.newtick();
 }
 
 void start()
@@ -116,6 +121,7 @@ void start()
 
 int main()
 {
+    settings();
     stats();
     start();
     game.endgame(1);
