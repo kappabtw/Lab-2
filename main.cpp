@@ -85,7 +85,7 @@ void stats()
                 break;
         }   
     }
-    Player.plusstat(freestat, "STA");
+    Player.plusstat(freestat, "EDU");
     Player.startstamina();
     game.newtick(0);
 }
