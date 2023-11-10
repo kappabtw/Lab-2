@@ -223,7 +223,7 @@ void Game::newtick(int a = 1)
             cout<<endl<<arr[(random((0),(num - 1)))];
             break;
     }
-    if (a != 0)      //каждый tickcount тик восстанавливает стамину(если значение не равно нулю)
+    if (a != 0)      //каждый tickcount тик восстанавливает стамину(если аргумент передаваемый newtick не равен 0)
     {
         ticks++;
         if (ticks == tickcount)
