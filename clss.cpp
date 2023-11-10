@@ -97,7 +97,7 @@ void Person::plusstat(int value, string stat) //(int) value, (str) stat
         stamina += value;
         return;
     }
-    cerr<<"Wrong in plusstat("<<stat<<"), returned 0";
+    cerr<<"Wrong in plusstat("<<stat<<"), nothing is changed";
 }
 
 int Person::getstat(string stat)
