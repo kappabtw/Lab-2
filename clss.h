@@ -43,8 +43,7 @@ class Game {
 class location
 {
     public:
-        location(string name): locationname(name)
-        {}
+        location(string);
         string Name();
     private:
         string locationname;
@@ -53,8 +52,7 @@ class location
 class event//неподконтрольное событие, которое может случается во время newtick
 {
     public: 
-    event(string ename, int evalue):name(ename), value(evalue)
-    {}
+    event(string, int);
     protected:
         string name;
         int value;
@@ -72,8 +70,7 @@ class zeroevent: public event //событие без изменений stat
 class item // item newitem(name, value)
 { 
     public:
-        item(string iname, int ivalue): name(iname), value(ivalue)
-        {}
+        item(string, int);
         void use();
     protected:
         string stat;
@@ -89,8 +86,7 @@ class action // action newaction(name,value,needstat)
         void chvalue(int);
         void act(); //делает дейсвтие пассивным(выносливость всё ещё тратиться)
         void pass(); //делает действие активным
-        action(string iname, int ivalue, int ineedstat): name(iname), value(ivalue), needstat(ineedstat)// name value needstat active
-        {} 
+        action(string, int, int);
     protected:
         string name;
         string stat;
@@ -102,72 +98,48 @@ class action // action newaction(name,value,needstat)
 class actionINT : public action
 {
     public:
-        actionINT(string iname, int ivalue, int ineedstat, int iactive): action(iname,ivalue,ineedstat) //name value needstat active
-        {
-            stat = "INT";
-        }
+        actionINT(string, int, int);
 };
 
 class actionSTR : public action
 {
      public:
-        actionSTR(string iname, int ivalue, int ineedstat, int iactive): action(iname,ivalue,ineedstat) //name value needstat active
-        {
-            stat = "STR";
-        }
+        actionSTR(string, int, int);
 };
 
 class actionEDU : public action
 {
      public:
-        actionEDU(string iname, int ivalue, int ineedstat, int iactive): action(iname,ivalue,ineedstat) //name value needstat active
-        {
-            stat = "EDU";
-        }
+        actionEDU(string, int, int);
 };
 
 class actionSTA : public action
 {
      public: 
-        actionSTA(string iname, int ivalue, int ineedstat, int iactive): action(iname,ivalue,ineedstat) //name value needstat active
-        {
-            stat = "STA";
-        }
+        actionSTA(string, int, int);
 };
 
 class itemINT : public item
 {   
     public:
-        itemINT(string iname, int ivalue):item(iname,ivalue)
-        {
-            stat = "INT";
-        }
+        itemINT(string, int);
       
 };
 
 class itemSTR : public item
 {
     public:
-        itemSTR(string iname, int ivalue):item(iname,ivalue)
-        {
-            stat = "STR";
-        }
+        itemSTR(string, int);
 };
 
 class itemEDU : public item
 {
     public:
-            itemEDU(string iname, int ivalue):item(iname,ivalue)
-            {
-                stat = "EDU";
-            }
+            itemEDU(string, int);
 };
 
 class itemSTA : public item
 {
     public:
-        itemSTA(string iname, int ivalue):item(iname,ivalue)
-        {
-            stat = "STA";
-        }
+        itemSTA(string, int);
 };

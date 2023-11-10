@@ -32,8 +32,11 @@ int input() //todo сделать проверку для каждого вво�
 {   
     stringstream container;
     cin.clear(); // на случай, если предыдущий ввод завершился с ошибкой
-    //cin.ignore(numeric_limits<streamsize>::max(), '\n');
     getline(cin, in);
+    if (in == "")
+    {
+        return false;
+    }
     container<<in; 
     container>>res;
     container.clear();
@@ -180,7 +183,7 @@ void Person::calculate(int dosome)
 { 
     base = stamina - basestamina;
     basestamina = 3*endu + 2*stre - 2*inte;
-    if (dosome >> 0)
+    if (dosome > 0)
     {
         dosome -= bufinte;
         dosome -= bufstre;
@@ -269,7 +272,7 @@ bool action::donew()
 {
     Player.plusstat(value , stat);
     game.newtick(active);
-    if (needstat << Player.getstat(stat))
+    if (needstat < Player.getstat(stat))
     {
         return false;
     }
@@ -308,3 +311,52 @@ zeroevent::zeroevent(string ename):event(ename, 0)
     delete[] arr;
     arr = arr2;
 }
+
+//конструкторы
+item::item(string iname, int ivalue): name(iname), value(ivalue){}
+
+action::action(string iname, int ivalue, int ineedstat): name(iname), value(ivalue), needstat(ineedstat){} 
+
+actionINT::actionINT(string iname, int ivalue, int ineedstat = 0): action(iname,ivalue,ineedstat) //name value needstat active
+{
+    stat = "INT";
+}
+
+actionSTR::actionSTR(string iname, int ivalue, int ineedstat = 0): action(iname,ivalue,ineedstat) //name value needstat active
+{
+    stat = "STR";
+}
+
+actionEDU::actionEDU(string iname, int ivalue, int ineedstat = 0): action(iname,ivalue,ineedstat) //name value needstat active
+{
+    stat = "EDU";
+}
+
+actionSTA::actionSTA(string iname, int ivalue, int ineedstat = 0): action(iname,ivalue,ineedstat) //name value needstat active
+{
+    stat = "STA";
+}
+
+itemINT::itemINT(string iname, int ivalue):item(iname,ivalue)
+{
+    stat = "INT";
+}
+
+itemSTR::itemSTR(string iname, int ivalue):item(iname,ivalue)
+{
+    stat = "STR";
+}
+
+itemEDU::itemEDU(string iname, int ivalue):item(iname,ivalue)
+{
+    stat = "EDU";
+}
+
+itemSTA::itemSTA(string iname, int ivalue):item(iname,ivalue)
+{
+    stat = "STA";
+}
+
+location::location(string name):locationname(name){}
+
+event::event(string ename, int evalue):name(ename), value(evalue){}
