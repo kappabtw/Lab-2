@@ -136,7 +136,7 @@ class itemSTR : public item
 class itemEDU : public item
 {
     public:
-            itemEDU(string, int);
+        itemEDU(string, int);
 };
 
 class itemSTA : public item
