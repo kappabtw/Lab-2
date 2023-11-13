@@ -4,9 +4,9 @@ using namespace std;
 class Person {  
     public:       
         Person();   
-        void setName(string);   
-        string getName();
-        void calculate(int);
+        virtual void setName(string);   
+        virtual string getName();
+        virtual void calculate(int);
         int getbase();
         int getstat(string);
         int getstamina();
@@ -41,7 +41,7 @@ class Game {
         int tickcount; //через какое количество тиков восстанавливается стамина
 };
 
-class location
+class location //убрать
 {
     public:
         location(string);
@@ -72,7 +72,7 @@ class item // item newitem(name, value)
 { 
     public:
         item(string, int);
-        void use();
+        virtual void use();
     protected:
         string stat;
         string name;
@@ -82,12 +82,12 @@ class item // item newitem(name, value)
 class action // action newaction(name,value,needstat) 
 {          
     public:
-        bool donew();
+        action(string, int, int);
+        virtual bool donew();
         int getvalue();
-        void chvalue(int);
+        virtual void chvalue(int);
         void act(); //делает дейсвтие пассивным(выносливость всё ещё тратиться)
         void pass(); //делает действие активным
-        action(string, int, int);
     protected:
         string name;
         string stat;

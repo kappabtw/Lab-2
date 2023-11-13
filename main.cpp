@@ -1,8 +1,18 @@
-#include <clss.cpp>
-#include <math.h>
-
+#include "action.cpp"
+#include "event.cpp"
+#include "item.cpp"
+#include "actionSTAT.cpp"
+#include "itemSTAT.cpp"
+#include "zeroevent.cpp"
+#include "location.cpp"
+#include "Person.cpp"
+#include "Game.cpp"
+#include "GamePerson.cpp"
+#include "voids.cpp"
+//#include <math.h>
 //инициализация
 
+itemSTA r{"f", 2};
 location kitchen{"Kitchen"};
 itemINT gre{"Grechka dada", 2};
 actionSTA wakeup{"Wakeup", 0};
@@ -21,6 +31,8 @@ void settings()
 
 void stats()
 {
+    int res;
+    string in;
     int freestat = 10;
     int chars = 0;
     cout<< "Enter your nickname:\n" << endl;
@@ -97,11 +109,13 @@ void stats()
     }
     Player.plusstat(freestat, "EDU");
     Player.startstamina();
-    game.newtick();
+    game.newtick(0);
+    r.use();
 }
 
 void start()
 {
+    int res;
     res = random(1, 6);
     switch (res)
     {
@@ -129,5 +143,5 @@ int main()
     settings();
     stats();
     start();
-    game.endgame(1);
+    game.endgame(1);   
 }

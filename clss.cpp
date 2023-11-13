@@ -1,4 +1,4 @@
-#include <clss.h>
+#include <D:\Code\Project\lab1\lab2\Lab2\clss.h>
 #include <iostream>
 #include <sstream>
 #include <typeinfo>
@@ -197,14 +197,6 @@ void Person::calculate(int dosome)
     stamina = basestamina + base;
 }
 
-
-Game::Game(int b):tickcount(b)
-{
-    ticks = 0;
-    srand(time(0));
-}
-
-
 void Game::newtick(int a = 1)
 {
     Player.getsbuff();
@@ -377,3 +369,8 @@ Person::Person()
     base = 0;
 }
 
+Game::Game(int b):tickcount(b)
+{
+    ticks = 0;
+    srand(time(0));
+}
