@@ -1,7 +1,7 @@
 #include "GamePerson.cpp"
-#include "arr.cpp"
 #include <ctime>
 #include "voids.cpp"
+#include "vector.cpp"
 
 void Game::newtick(int a = 1)
 {
@@ -12,14 +12,17 @@ void Game::newtick(int a = 1)
     {
         endgame(0);
     }
-    switch (random(0,1))
+    if (delzeroevents("check") == false)
     {
-        case 1:
-            cout<<"...";
-            break;
-        case 0:
-            cout<<endl<<arr[(random((0),(num - 1)))];
-            break;
+        switch (random(0,1))
+        {
+            case 1:
+                cout<<"...";
+                break;
+            case 0:
+                cout<<endl<<vectorevents->at((random((0),(vectorevents->size() - 1))));
+                break;
+        }
     }
     if (a != 0)      //каждый tickcount тик восстанавливает стамину(если аргумент передаваемый newtick не равен 0)
     {
@@ -37,6 +40,8 @@ void Game::newtick(int a = 1)
 
 void Game::endgame(int code = 0)
 {
+    if (delzeroevents("check") == false)
+        delzeroevents();
     switch (code)
     {
         case 1:

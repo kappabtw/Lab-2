@@ -9,6 +9,7 @@
 #include "Game.cpp"
 #include "GamePerson.cpp"
 #include "voids.cpp"
+#include <cstring>
 //#include <math.h>
 //инициализация
 
@@ -36,10 +37,9 @@ void stats()
     int freestat = 10;
     int chars = 0;
     cout<< "Enter your nickname:\n" << endl;
-    getline(cin, in);
-    while (in == "")
+    cin>>in;
+    while (in.empty())
     {
-        cin.clear();
         getline(cin,in);
     }
     Player.setName(in);
@@ -47,6 +47,7 @@ void stats()
     cout << "They will change as the game progresses, but now you can choose the initial characteristics [min 1 , max 5]." << endl;
     while (chars != 1) //Inte
     {
+        cin.clear();
         cout<<"\nEnter your intelligence [1-5]:\n" << endl;
         res = input();
         switch(res)
@@ -143,5 +144,5 @@ int main()
     settings();
     stats();
     start();
-    game.endgame(1);   
+    game.endgame(1);
 }

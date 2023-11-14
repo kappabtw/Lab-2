@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 #include <sstream>
+#include <limits>
 #pragma once
 
 int input() //todo сделать проверку для каждого вводимого символа, пока что любой символ(кроме чисел) является нулем 
@@ -8,8 +9,9 @@ int input() //todo сделать проверку для каждого вво�
     string in;
     int out;
     stringstream container; //check
-    cin.clear(); // на случай, если предыдущий ввод завершился с ошибкой check
-    getline(cin, in);
+    cin.clear(); // на случай, если предыдущий ввод завершился с ошибкой 
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin>>in;
     if (in.empty())
     {
         return false;

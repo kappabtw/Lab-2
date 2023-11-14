@@ -1,5 +1,4 @@
 #include "actionSTAT.h"
-#pragma once
 
 actionEDU::actionEDU(string iname, int ivalue, int ineedstat = 0): action(iname,ivalue,ineedstat) //name value needstat active
 {
