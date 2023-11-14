@@ -10,7 +10,7 @@ void push(string text = "")
 {   
     if (text.empty())
     {
-        cerr<<"text of event is \"\"";
+        cerr<<"text of event is empty";
     }
     if (text.empty() == false)
     {
