@@ -11,7 +11,7 @@ bool action::donew()
     return true;
 }
 
-void action::chvalue(int a,  string change = "") 
+void action::chvalue(int a) 
 {
     value = a;
 }

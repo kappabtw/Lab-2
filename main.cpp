@@ -111,7 +111,6 @@ void stats()
     Player.plusstat(freestat, "EDU");
     Player.startstamina();
     game.newtick(0);
-    r.use();
 }
 
 void start()
