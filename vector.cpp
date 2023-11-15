@@ -5,7 +5,7 @@ using namespace std;
 
 vector<string>* vectorevents = new vector<string>;
 bool vdel = false;
-
+bool zerodel = false;
 void push(string text = "")
 {   
     if (text.empty())

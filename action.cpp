@@ -26,10 +26,20 @@ void action::pass()
     active = 0;
 }
 
-int action::getvalue()
+int action::getValue()
 {
     return value;
-}  
+}
+
+string action::getName()
+{
+    return name;
+}
+
+string action::getStat()
+{
+    return stat;
+}
 
 action::action(string iname, int ivalue, int ineedstat): name(iname), value(ivalue), needstat(ineedstat)
 {

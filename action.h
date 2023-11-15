@@ -7,7 +7,9 @@ class action // action newaction(name,value,needstat)
     public:
         action(string, int, int);
         bool donew();
-        int getvalue();
+        int getValue();
+        string getStat();
+        string getName();
         virtual void chvalue(int);
         void act(); //делает дейсвтие пассивным(выносливость всё ещё тратиться)
         void pass(); //делает действие активным

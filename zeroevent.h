@@ -3,5 +3,5 @@
 class zeroevent: public event //событие без изменений stat
 {
     public:
-        zeroevent(string ename);
+        zeroevent(string ename, auto* ptr);
 };
