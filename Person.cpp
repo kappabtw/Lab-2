@@ -1,7 +1,7 @@
 #include "Person.h"
-void Person::setName(string change)
+void Person::setName(string change) //присваивает имя для объекта класса Person
 {
-    nameperson = change;
+    nameperson = change; 
 }
 
 string Person::getName()
@@ -9,7 +9,7 @@ string Person::getName()
     return nameperson;
 }
 
-void Person::plusstat(int value, string stat) //(int) value, (str) stat
+void Person::plusstat(int value, string stat) //Добавляет значение value к очкам характеристик stat
 {
     if (stat == "INT")
     {
@@ -59,7 +59,7 @@ void Person::plusstat(int value, string stat) //(int) value, (str) stat
     cerr<<"Wrong in plusstat("<<stat<<"), nothing is changed";
 }
 
-int Person::getstat(string stat)
+int Person::getstat(string stat) //возвращает значение очков характетеристики stat
 {
     if (stat == "INT")
     {
@@ -81,13 +81,13 @@ int Person::getstat(string stat)
     return 0;
 }
 
-int Person::getstamina()
+int Person::getstamina() //возвращает количесво стамины
 
 {
     return stamina;
 }
 
-int Person::getebuff()
+int Person::getebuff() //если выносливость достигает максимального значения, то bufendu присваивается значение 2
 {
     if (endu == 5)
     {
@@ -100,7 +100,7 @@ int Person::getebuff()
     return bufendu;
 }
 
-void Person::getibuff()
+void Person::getibuff() //если интеллект достигает максимального значения, то bufendu присваивается значение 2
 {
     if (inte == 5)
     {
@@ -112,7 +112,7 @@ void Person::getibuff()
     }
 }
 
-void Person::getsbuff()
+void Person::getsbuff()  //если силы достигает максимального значения, то bufendu присваивается значение 2
 {
     if (stre == 5)
     {
@@ -124,33 +124,33 @@ void Person::getsbuff()
     }
 }
 
-void Person::startstamina() //работает
+void Person::startstamina() //считает базовую стамину, после чего присваивает значение базовой текущей стамине
 {
     basestamina = 3*endu + 2*stre - 2*inte;
     stamina = basestamina;
 }
 
-int Person::getbase() //написал для проверки логики
+int Person::getbase() //возвращает базовую стамину
 {
     return basestamina;
 }
 
-void Person::calculate(int dosome)
+void Person::calculate(int dosome) //высчитывает кол-во стамины после дейсвтия, требующее стамины кол-ва dosome
 { 
-    base = stamina - basestamina;
-    basestamina = 3*endu + 2*stre - 2*inte;
-    if (dosome > 0)
+    base = stamina - basestamina; //считает разницу между базвовой и настоящей стаминой
+    basestamina = 3*endu + 2*stre - 2*inte; //высчитывает базовую стамину
+    if (dosome > 0) //если dosome больше нуля, то...
     {
-        dosome -= bufinte;
-        dosome -= bufstre;
-        if (dosome <= 0)
+        dosome -= bufinte; //от dosome высчитывается bufinte
+        dosome -= bufstre; //от dosome высчитывается bufinte
+        if (dosome <= 0) //если dosome получился равным нулю или меньше, то dosome приравнивается 1
         {
             dosome = 1;
         }
-        base -= dosome;
+        base -= dosome; //от base высчитывается значение dosome
     
     }
-    stamina = basestamina + base;
+    stamina = basestamina + base; //стамина приравнивается сумме базовой стамины и получившийся base
 }
 
 Person::Person()

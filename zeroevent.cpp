@@ -3,7 +3,7 @@
 
 zeroevent::zeroevent(string ename, auto* ptr):event(ename, 0)
 {   
-    push(ename);
+    pushzero(ename);
     delete[] ptr;
     delete ptr;
 }

@@ -5,24 +5,17 @@
 
 void Game::newtick(int a = 1)
 {
-    Player.getsbuff();
+    Player.getsbuff(); 
     Player.getibuff();
     Player.calculate(0);
-    if (Player.getstamina() <= 0)
+    if (Player.getstamina() <= 0) //если во время нового тика стамина игрока <= 0, то вызвывается endgame с аргументом 0
     {
         endgame(0);
     }
-    if (delzeroevents("check") == false)
+    if (delzeroevents("check") == false) //если vectorevents не удалён, то каждый тик происходит случайное событие без влияния на очки статистик
     {
-        switch (random(0,1))
-        {
-            case 1:
-                cout<<"...";
-                break;
-            case 0:
-                cout<<endl<<vectorevents->at((random((0),(vectorevents->size() - 1))));
-                break;
-        }
+        cout<<endl<<vectorevents->at((random((0),(vectorevents->size() - 1))));
+        
     }
     if (a != 0)      //каждый tickcount тик восстанавливает стамину(если аргумент передаваемый newtick не равен 0)
     {

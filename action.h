@@ -6,7 +6,7 @@ class action // action newaction(name,value,needstat)
 {          
     public:
         action(string, int, int);
-        bool donew();
+        virtual bool donew();
         int getValue();
         string getStat();
         string getName();
