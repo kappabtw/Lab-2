@@ -13,7 +13,7 @@ void stats()
         getline(cin,in);
     }
     Player.setName(in);
-    cout<< "\nYou have "<<freestat<<" free stat points. \nThere are three main characteristics: intelligence, strength and endurance." << endl;
+    cout<< "\nYou have 10 free stat points. \nThere are three main characteristics: intelligence, strength and endurance." << endl;
     cout << "They will change as the game progresses, but now you can choose the initial characteristics [min 1 , max 5]." << endl;
     while (stat != 1)
     {
