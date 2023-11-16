@@ -11,8 +11,8 @@
 #include "voids.cpp"
 #include <cstring>
 #pragma once
+//инициализация
 
-//инициализация объектов используемых в игре
 location kitchen{"Kitchen"};
 itemSTA gre{"Grechka dada", 2};
 actionSTA wakeup{"Wakeup", 0};
@@ -24,7 +24,7 @@ zeroevent *event5 = new zeroevent{"sometext 5", event5};
 zeroevent *event6 = new zeroevent{"sometext 6", event6};
 zeroevent *event7 = new zeroevent{"sometext 7", event7};
 
-void settings() //настройка объектов
+void settings()
 {
     wakeup.pass();
 }

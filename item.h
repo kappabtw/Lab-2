@@ -5,7 +5,7 @@ class item // item newitem(name, value)
 { 
     public:
         item(string, int);
-        virtual void use();
+        void use();
         string getName();
         string getStat();
         int getValue();

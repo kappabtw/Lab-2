@@ -4,26 +4,26 @@ using namespace std;
 #include <limits>
 #pragma once
 
-int input() // вводимый пользователем символ приобразуется в число
-{
+int input() //todo сделать проверку для каждого вводимого символа, пока что любой символ(кроме чисел) является нулем 
+{   
     string in;
     int out;
-    stringstream container; // check
-    cin.clear();            // на случай, если предыдущий ввод завершился с ошибкой
+    stringstream container; //check
+    cin.clear(); // на случай, если предыдущий ввод завершился с ошибкой 
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    cin >> in;
+    cin>>in;
     if (in.empty())
     {
         return false;
     }
-    container << in;
-    container >> out;
+    container<<in; 
+    container>>out;
     container.clear();
     return out;
-}
+} 
 
-int random(int a, int b) // случайное число от a до b включительно
+int random(int a, int b)
 {
-    int c = a + rand() % b;
+    int c = a + rand()%b;
     return c;
 }

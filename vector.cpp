@@ -4,33 +4,34 @@ using namespace std;
 #pragma once
 
 vector<string>* vectorevents = new vector<string>;
-
-bool zerodel = false; //true - vectorevents удален, false - не удалён
-
-bool delzeroevents(string arg = "delete")
-{
-    if (arg == "check")
-    {
-        return zerodel;
-    }
-    if (arg == "delete")
-    {
-        free(vectorevents); //очищает память, выделенную под vectorevents 
-        zerodel = true;
-        return true;
-    }
-    cerr<<"Wrong argument in delevents["<<arg<<"], nothing is deleted";
-    return false;
-}
-
-void pushzero(string text = "") //добавляет в вектор текст (если введена не пустая строка)
+bool vdel = false;
+bool zerodel = false;
+void push(string text = "")
 {   
     if (text.empty())
     {
         cerr<<"text of event is empty";
     }
-    if (delzeroevents() == false)
+    if (text.empty() == false)
     {
         vectorevents->push_back(text);
+    }
+}
+
+bool delzeroevents(string arg = "delete")
+{
+    if ((arg != "delete")&&(arg != "check"))
+    {
+        cerr<<"Wrong argument in delevents["<<arg<<"]";
+    }
+    if (arg == "check")
+    {
+        return vdel;
+    }
+    if (arg == "delete")
+    {
+        free(vectorevents);
+        vdel = true;
+        return vdel;
     }
 }
