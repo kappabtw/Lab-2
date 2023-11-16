@@ -29,7 +29,7 @@ void pushzero(string text = "") //добавляет в вектор текст 
     {
         cerr<<"text of event is empty";
     }
-    if (delzeroevents() == false)
+    if (delzeroevents("check") == false)
     {
         vectorevents->push_back(text);
     }

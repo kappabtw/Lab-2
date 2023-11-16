@@ -1,6 +1,6 @@
 #include "stat.cpp"
 #include "start.cpp"
-#include "gametests.cpp"
+#include "test.cpp"
 
 int main()
 {

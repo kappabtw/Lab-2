@@ -14,7 +14,7 @@ void Game::newtick(int a = 1)
     }
     if (delzeroevents("check") == false) //если vectorevents не удалён, то каждый тик происходит случайное событие без влияния на очки статистик
     {
-        cout<<endl<<vectorevents->at((random((0),(vectorevents->size() - 1))));
+        cout<<"\n"<<vectorevents->at((random((0),(vectorevents->size() - 1))));
         
     }
     if (a != 0)      //каждый tickcount тик восстанавливает стамину(если аргумент передаваемый newtick не равен 0)
@@ -33,7 +33,7 @@ void Game::newtick(int a = 1)
 
 void Game::endgame(int code = 0)
 {
-    if (delzeroevents("check") == false)
+        if (delzeroevents("check") == false)
         delzeroevents();
     switch (code)
     {

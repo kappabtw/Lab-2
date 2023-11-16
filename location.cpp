@@ -1,4 +1,5 @@
 #include "location.h"
+#pragma once
 
 string location::Name()
 {
