@@ -19,7 +19,7 @@ bool delzeroevents(string arg = "delete")
         zerodel = true;
         return true;
     }
-    cerr<<"Wrong argument in delevents["<<arg<<"], nothing is deleted, returned "<<zerodel;
+    cerr<<"Wrong argument in delzeroevents["<<arg<<"], nothing is deleted, returned "<<zerodel;
     return zerodel;
 }
 
