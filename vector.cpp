@@ -28,6 +28,7 @@ void pushzero(string text = "") //добавляет в вектор текст 
     if (text.empty())
     {
         cerr<<"text of event is empty";
+        return;
     }
     if (delzeroevents("check") == false)
     {
