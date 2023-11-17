@@ -19,8 +19,8 @@ bool delzeroevents(string arg = "delete")
         zerodel = true;
         return true;
     }
-    cerr<<"Wrong argument in delevents["<<arg<<"], nothing is deleted";
-    return false;
+    cerr<<"Wrong argument in delevents["<<arg<<"], nothing is deleted, returned "<<zerodel;
+    return zerodel;
 }
 
 void pushzero(string text = "") //добавляет в вектор текст (если введена не пустая строка)
