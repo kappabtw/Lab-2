@@ -6,5 +6,5 @@ void test()
     cout<<"\n\nName: "<<gre.getName();
     cout<<"\n\nStat: "<<gre.getStat();
     cout<<"\n\nUsing object \"gre\"...";
-    gre.use();
+    gre.useItem();
 }

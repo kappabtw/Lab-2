@@ -1,16 +1,19 @@
-#include <iostream>
-using namespace std;
+#pragma once
+#include "Game.h"
+#include "Person.h" 
 
-class item // item newitem(name, value)
+class item 
 { 
     public:
-        item(string, int);
-        virtual void use();
-        string getName();
-        string getStat();
+        item(Game SomeGame, Person SomePerson,std::string newName, int newValue);
+        virtual void useItem();
+        std::string getName();
+        std::string getStat();
         int getValue();
     protected:
-        string stat;
-        string name;
+        Person Player;
+        Game game{Player, 4};
+        std::string stat;
+        std::string name;
         int value;
 };

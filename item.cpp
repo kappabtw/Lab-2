@@ -1,19 +1,18 @@
-#include "item.h"
-#include "GamePerson.cpp"
 #pragma once
+#include "item.h"
 
-void item::use()
+void item::useItem()
 {
     Player.plusstat(value, stat);
     game.newtick(0);
 }
 
-string item::getName()
+std::string item::getName()
 {
     return name;
 }
 
-string item::getStat()
+std::string item::getStat()
 {
     return stat;
 }
@@ -23,4 +22,8 @@ int item::getValue()
     return value;
 }
 
-item::item(string iname, int ivalue): name(iname), value(ivalue){}
+item::item(Game SomeGame,Person SomePerson, std::string newName, int newValue): name(newName), value(newValue)
+{
+    this->game = SomeGame;
+    this->Player = SomePerson;
+}

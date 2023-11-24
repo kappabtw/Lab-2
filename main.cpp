@@ -1,3 +1,4 @@
+#include "ini.cpp"
 #include "stat.cpp"
 #include "start.cpp"
 #include "test.cpp"
@@ -7,6 +8,6 @@ int main()
     settings();
     stats();
     start();
-    test();
+    //test();
     game.endgame(1);
 }

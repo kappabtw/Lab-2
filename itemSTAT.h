@@ -3,24 +3,24 @@
 class itemINT : public item
 {   
     public:
-        itemINT(string, int);
+        itemINT(Game SomeGame,Person SomePerson,std::string NewName, int newValue);
       
 };
 
 class itemSTR : public item
 {
     public:
-        itemSTR(string, int);
+        itemSTR(Game SomeGame,Person SomePerson,std::string NewName, int newValue);
 };
 
 class itemEDU : public item
 {
     public:
-        itemEDU(string, int);
+        itemEDU(Game SomeGame,Person SomePerson,std::string NewName, int newValue);
 };
 
 class itemSTA : public item
 {
     public:
-        itemSTA(string, int);
+        itemSTA(Game SomeGame,Person SomePerson,std::string NewName, int newValue);
 };

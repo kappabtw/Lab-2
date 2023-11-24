@@ -1,45 +1,21 @@
 #include "actionSTAT.h"
 
-actionEDU::actionEDU(string iname, int ivalue, int ineedstat = 0): action(iname,ivalue,ineedstat) //name value needstat active
+actionFixedStat::actionFixedStat(Game SomeGame, Person SomePerson, std::string newName,std::string newStat, int newValue, int newNeedStat = 0):action(SomeGame, SomePerson,newName, newStat, newNeedStat)
+{}
+
+bool actionFixedStat::DoAction()
 {
-    stat = "EDU";
+    if (NeedStatForAction >= Player.getstat(stat)) //если требуемые очки хар-ки >= очкам, которые есть у персонажа, то дейсвие не выполняется 
+    {
+        return false;
+    }
+    Player.plusstat(value , stat); //добавляет к очкам статистики stat значение value
+    game.newtick(IsActive); //вызывает newtick объекта game с аргументом active
+    return true;
 }
 
-void actionEDU::chvalue(int num, string change = "EDU")
-{
-    value = num;
-    stat = change;
-}
 
-actionSTR::actionSTR(string iname, int ivalue, int ineedstat = 0): action(iname,ivalue,ineedstat) //name value needstat active
+void actionFixedStat::ChangeValue(int newValue)
 {
-    stat = "STR";
-}
-
-void actionSTR::chvalue(int num, string change = "STR")
-{
-    value = num;
-    stat = change;
-}
-
-actionINT::actionINT(string iname, int ivalue, int ineedstat = 0): action(iname,ivalue,ineedstat) //name value needstat active
-{
-    stat = "INT";
-}
-
-void actionINT::chvalue(int num, string change = "INT")
-{
-    value = num;
-    stat = change;
-}
-
-actionSTA::actionSTA(string iname, int ivalue, int ineedstat = 0): action(iname,ivalue,ineedstat) //name value needstat active
-{
-    stat = "STA";
-}
-
-void actionSTA::chvalue(int num, string change = "STA")
-{
-    value = num;
-    stat = change;
+    value = newValue;
 }

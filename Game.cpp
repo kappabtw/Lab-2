@@ -1,8 +1,7 @@
-#include "GamePerson.cpp"
 #include <ctime>
 #include "voids.cpp"
 #include "vector.cpp"
-
+#include "Game.h"
 void Game::newtick(int a = 1)
 {
     Player.getsbuff(); 
@@ -53,8 +52,9 @@ void Game::endgame(int code = 0)
     exit(0);
 }
 
-Game::Game(int b):tickcount(b)
+Game::Game(Person SomePerson,int newtickcount):tickcount(newtickcount)
 {
     ticks = 0;
     srand(time(0));
+    this->Player = SomePerson;
 }

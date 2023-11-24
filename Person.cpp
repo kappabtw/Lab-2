@@ -1,5 +1,6 @@
+#pragma once
 #include "Person.h"
-void Person::setName(string change) //присваивает имя для объекта класса Person
+void Person::setName(string change)
 {
     nameperson = change; 
 }

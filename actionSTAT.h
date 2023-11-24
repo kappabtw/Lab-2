@@ -1,29 +1,10 @@
 #include "action.h"
 
-class actionEDU : public action
-{
-     public:
-        actionEDU(string, int, int);
-        void chvalue(int, string);
-};
-
-class actionINT : public action
+class actionFixedStat : public action
 {
     public:
-        actionINT(string, int, int);
-        void chvalue(int, string); 
-};
-
-class actionSTA : public action
-{
-     public: 
-        actionSTA(string, int, int);
-        void chvalue(int, string); 
-};
-
-class actionSTR : public action
-{
-     public:
-        actionSTR(string, int, int);
-        void chvalue(int, string); 
+        bool DoAction();
+        void ChangeValue(int newValue);
+        actionFixedStat(Game SomeGame, Person SomePerson, std::string newName,std::string newStat, int newValue, int newNeedStat);
+        
 };

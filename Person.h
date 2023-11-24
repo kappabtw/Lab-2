@@ -3,7 +3,13 @@ using namespace std;
 #pragma once
 class Person {  
     public:       
-        Person();   
+        Person();
+        class Buffs
+        {
+            public:
+            private:     
+        };
+           
         void setName(string);   
         string getName();
         void calculate(int);
