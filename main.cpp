@@ -1,5 +1,5 @@
 #include "ini.cpp"
-#include "stat.cpp"
+#include "stats1.cpp"
 #include "start.cpp"
 #include "test.cpp"
 

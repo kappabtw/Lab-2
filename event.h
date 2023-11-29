@@ -5,7 +5,7 @@ using namespace std;
 class event//неподконтрольное событие, которое может случается во время newtick
 {
     public: 
-    event(string, int);
+    event(string ename, int evalue):name(ename), value(evalue){}
     protected:
         string name;
         int value;

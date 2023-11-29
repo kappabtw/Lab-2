@@ -1,38 +1,35 @@
+#pragma once
 #include <ctime>
 #include "voids.cpp"
-#include "vector.cpp"
 #include "Game.h"
-void Game::newtick(int a = 1)
+
+void Game::newtick()
 {
-    Player.getsbuff(); 
-    Player.getibuff();
     Player.calculate(0);
-    if (Player.getstamina() <= 0) //если во время нового тика стамина игрока <= 0, то вызвывается endgame с аргументом 0
+    if (Player.stamina.GET() <= 0) //если во время нового тика стамина игрока <= 0, то вызвывается endgame с аргументом 0
     {
         endgame(0);
     }
-    if (delzeroevents("check") == false) //если vectorevents не удалён, то каждый тик происходит случайное событие без влияния на очки статистик
+    if (zeroEvents.DeleteOrCheck("check") == false) //если vectorevents не удалён, то каждый тик происходит случайное событие без влияния на очки статистик
     {
-        cout<<"\n"<<vectorevents->at((random((0),(vectorevents->size() - 1)))); 
+        int index = random(zeroEvents.minIndex() , zeroEvents.maxIndex());
+        cout<<"\n"<<zeroEvents.getEvent(index); 
     }
-    if (a != 0)      //каждый tickcount тик восстанавливает стамину(если аргумент передаваемый newtick не равен 0)
+    ticks++;
+    if (ticks == tickcount)
     {
-        ticks++;
-        if (ticks == tickcount)
-        {
-            Player.plusstat(Player.getebuff(), "STA");
-            ticks = 0;
-        }
+        Player.stamina.Change(Player.recoveringSTA());
+        ticks = 0;
     }
     cout<<"\n----------------------------------------"<<endl;
-    cout<<"[STA - "<<Player.getstamina()<<"] [INT - "<<Player.getstat("INT")<<"] [STR - "<<Player.getstat("STR")<<"] [EDU - "<<Player.getstat("EDU")<<"]"<<endl;
+    cout<<"[STA - "<<Player.stamina.GET()<<"] [INT - "<<Player.stats.getStat("INT")<<"] [STR - "<<Player.stats.getStat("STR")<<"] [EDU - "<<Player.stats.getStat("EDU")<<"]"<<endl;
     cout<<"----------------------------------------"<<endl;
 }
 
 void Game::endgame(int code = 0)
 {
-        if (delzeroevents("check") == false)
-        delzeroevents();
+        if (zeroEvents.DeleteOrCheck("check") == false)
+            zeroEvents.DeleteOrCheck();
     switch (code)
     {
         case 1:
@@ -45,16 +42,22 @@ void Game::endgame(int code = 0)
             {
                 case 1:
                     cout<<"\nInfo\n";
-                    cout<<Player.getstamina()<<endl<<Player.getbase()<<endl;
+                    cout<<Player.stamina.GET()<<endl<<Player.Base.GET()<<endl;
             }
     }
     system("pause");
     exit(0);
 }
 
-Game::Game(Person SomePerson,int newtickcount):tickcount(newtickcount)
+Game::Game(int newtickcount):tickcount(newtickcount)
 {
     ticks = 0;
     srand(time(0));
-    this->Player = SomePerson;
+}
+
+void Game::OnTheStart(std::string setName, int INT, int STR, int EDU)
+{
+    Player.Base.reboot();
+    Player.stamina.reboot();
+    Player.startstamina();
 }

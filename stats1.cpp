@@ -2,17 +2,19 @@
 
 void stats()
 {
+
     int res;
-    string in;
+    std::string newName;
     int freestat = 10;
     int stat = 0;
+    int newINT;
+    int newSTR;
     cout<< "Enter your nickname:\n" << endl;
-    cin>>in;
-    while (in.empty())
+    cin>>newName;
+    while (newName.empty())
     {
-        getline(cin,in);
+        getline(cin,newName);
     }
-    Player1.setName(in);
     cout<< "\nYou have "<<freestat<<" free stat points. \nThere are three main characteristics: intelligence, strength and endurance." << endl;
     cout << "They will change as the game progresses, but now you can choose the initial characteristics [min 1 , max 5]." << endl;
     while (stat != 1)
@@ -27,7 +29,7 @@ void stats()
             case 3:
             case 4:
             case 5:
-                Player1.plusstat(res, "INT");
+                newINT = res;
                 freestat -= res;
                 stat++;
                 break;
@@ -49,7 +51,7 @@ void stats()
             case 4:
                 if ((freestat - res)<= 5)
                 {
-                    Player1.plusstat(res, "STR");
+                    newSTR = res;
                     freestat -= res;
                     stat++;
                     break;
@@ -62,7 +64,7 @@ void stats()
             case 5:
                 if (freestat>>5)
                 {
-                    Player1.plusstat(res, "STR");
+                    newSTR = res;
                     freestat -= res;
                     stat++;
                     break;
@@ -78,8 +80,8 @@ void stats()
                 break;
         }   
     }
-    Player1.plusstat(freestat, "EDU");
-    Player1.startstamina();
-    game.newtick(0);
+    game.OnTheStart(newName, newINT, newSTR, freestat);
+    game.newtick();
+    
 }
 

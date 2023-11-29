@@ -2,7 +2,6 @@
 #include "action.cpp"
 #include "event.cpp"
 #include "item.cpp"
-#include "actionSTAT.cpp"
 #include "itemSTAT.cpp"
 #include "zeroevent.cpp"
 #include "location.cpp"
@@ -10,11 +9,12 @@
 #include "Game.cpp"
 #include "voids.cpp"
 #include <cstring>
-Person Player1;
-Game game{Player1, 4};
-itemSTA gre{game, Player1, "Gre", 4};
+
+STATS MainStat;
+Game game{4}; //todo агрегация
+itemSTA gre{"Gre", 4};
 location kitchen{"Kitchen"};
-actionFixedStat wakeup{game, Player1, "wakeup", "STA", 4};
+action wakeup{"wakeup", "STA", 4};
 zeroevent *event1 = new zeroevent{"sometext 1", event1};
 zeroevent *event2 = new zeroevent{"sometext 2", event2};
 zeroevent *event3 = new zeroevent{"sometext 3", event3};

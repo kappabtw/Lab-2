@@ -3,8 +3,7 @@
 
 void item::useItem()
 {
-    Player.plusstat(value, stat);
-    game.newtick(0);
+    StatVector.plusStat(stat , value);
 }
 
 std::string item::getName()
@@ -22,8 +21,5 @@ int item::getValue()
     return value;
 }
 
-item::item(Game SomeGame,Person SomePerson, std::string newName, int newValue): name(newName), value(newValue)
-{
-    this->game = SomeGame;
-    this->Player = SomePerson;
-}
+item::item(std::string newName, int newValue): name(newName), value(newValue)
+{}

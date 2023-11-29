@@ -1,21 +1,21 @@
 #include "itemSTAT.h"
 
-itemINT::itemINT(Game SomeGame, Person SomePerson,std::string iname, int ivalue):item(SomeGame,SomePerson,iname,ivalue)
+itemINT::itemINT(std::string iname, int ivalue):item(iname,ivalue)
 {
     stat = "INT";
 }
 
-itemSTR::itemSTR(Game SomeGame, Person SomePerson,std::string iname, int ivalue):item(SomeGame,SomePerson,iname,ivalue)
+itemSTR::itemSTR(std::string iname, int ivalue):item(iname,ivalue)
 {
     stat = "STR";
 }
 
-itemEDU::itemEDU(Game SomeGame, Person SomePerson,std::string iname, int ivalue):item(SomeGame,SomePerson,iname,ivalue)
+itemEDU::itemEDU(std::string iname, int ivalue):item(iname,ivalue)
 {
     stat = "EDU";
 }
 
-itemSTA::itemSTA(Game SomeGame, Person SomePerson,std::string iname, int ivalue):item(SomeGame,SomePerson,iname,ivalue)
+itemSTA::itemSTA(std::string iname, int ivalue):item(iname,ivalue)
 {
     stat = "STA";
 }

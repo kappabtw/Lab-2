@@ -1,18 +1,16 @@
 #pragma once
-#include "Game.h"
-#include "Person.h" 
+#include "vector.cpp"
 
 class item 
 { 
     public:
-        item(Game SomeGame, Person SomePerson,std::string newName, int newValue);
-        virtual void useItem();
+        item(std::string newName, int newValue);
+        void useItem();
         std::string getName();
         std::string getStat();
         int getValue();
+        STATS StatVector;
     protected:
-        Person Player;
-        Game game{Player, 4};
         std::string stat;
         std::string name;
         int value;

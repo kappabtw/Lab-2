@@ -1,149 +1,84 @@
 #pragma once
-#include "Person.h"
-void Person::setName(string change)
+#include "Game.cpp"
+
+int Game::Person::INT()
+{
+    return stats.getStat("INT");
+}
+int Game::Person::STR()
+{
+    return stats.getStat("STR");
+}
+int Game::Person::EDU()
+{
+    return stats.getStat("EDU");
+}
+int Game::Person::STA()
+{
+    return (stamina.GET());
+}
+
+void Game::Person::BaseStamina::Change(int count)
+{
+    ALLSTAMINA->at(index) = count;
+}
+
+void Game::Person::setName(string change)
 {
     nameperson = change; 
 }
 
-string Person::getName()
+string Game::Person::getName()
 {
     return nameperson;
 }
 
-void Person::plusstat(int value, string stat) //Добавляет значение value к очкам характеристик stat
+int Game::Person::recoveringSTA() //если выносливость достигает максимального значения, то bufendu присваивается значение 2
 {
-    if (stat == "INT")
-    {
-        inte += value;
-        if (inte > 5)
-            {
-                inte = 5;
-            }
-        if (inte < 1)
-        {
-            inte = 1;
-        }
-        return;
-    }
-    if (stat == "STR")
-    {
-        stre += value;
-        if (stre > 5)
-            {
-                stre = 5;
-            }
-        if (stre < 1)
-        {
-            stre = 1;
-        }
-        return;
-    }
-    if (stat == "EDU")
-    {
-        
-        endu += value;
-        if (endu > 5)
-            {
-                endu = 5;
-            }
-        if (endu < 1)
-        {
-            endu = 1;
-        }
-        return;
-    }
-    if (stat == "STA")
-    {
-        stamina += value;
-        return;
-    }
-    cerr<<"Wrong in plusstat("<<stat<<"), nothing is changed";
+    return Buff.getBuff("EDU");
 }
 
-int Person::getstat(string stat) //возвращает значение очков характетеристики stat
+int Game::Person::BuffSTR() 
 {
-    if (stat == "INT")
+    if (STR() == 5)
     {
-        return inte;
+        Buff.setBuff("STR", 1);
     }
-    if (stat == "STR")
+    else if (STR() != 5)
     {
-        return stre;
+        Buff.setBuff("STR", 0);
     }
-    if (stat == "EDU")
-    {
-        return endu;
-    }
-    if (stat == "STA")
-    {
-        return stamina;
-    }
-    cerr<<"Wrong in getstat("<<stat<<"), returned 0";
-    return 0;
+    return Buff.getBuff("STR");
 }
 
-int Person::getstamina() //возвращает количесво стамины
-
+int Game::Person::BuffINT()  
 {
-    return stamina;
+    if (INT() == 5)
+    {
+        Buff.setBuff("INT", 1);
+    }
+    else if (INT() != 5)
+    {
+        Buff.setBuff("INT", 0);
+    }
+    return Buff.getBuff("INT");
 }
 
-int Person::getebuff() //если выносливость достигает максимального значения, то bufendu присваивается значение 2
+void Game::Person::startstamina() //считает базовую стамину, после чего присваивает значение базовой текущей стамине
 {
-    if (endu == 5)
-    {
-        bufendu = 2;
-    }
-    else
-    {
-        bufendu = 1;
-    }
-    return bufendu;
+    base = 3*EDU() + 2*STR() - 2*INT();
+    stamina.Change(base);
 }
 
-void Person::getibuff() //если интеллект достигает максимального значения, то bufendu присваивается значение 2
-{
-    if (inte == 5)
-    {
-        bufinte = 1;
-    }
-    else 
-    {
-        bufinte = 0;
-    }
-}
-
-void Person::getsbuff()  //если силы достигает максимального значения, то bufendu присваивается значение 2
-{
-    if (stre == 5)
-    {
-        bufstre = 1;
-    }
-    else 
-    {
-        bufstre = 0;
-    }
-}
-
-void Person::startstamina() //считает базовую стамину, после чего присваивает значение базовой текущей стамине
-{
-    basestamina = 3*endu + 2*stre - 2*inte;
-    stamina = basestamina;
-}
-
-int Person::getbase() //возвращает базовую стамину
-{
-    return basestamina;
-}
-
-void Person::calculate(int dosome) //высчитывает кол-во стамины после дейсвтия, требующее стамины кол-ва dosome
+void Game::Person::calculate(int dosome) //высчитывает кол-во стамины после дейсвтия, требующее стамины кол-ва dosome
 { 
-    base = stamina - basestamina; //считает разницу между базвовой и настоящей стаминой
-    basestamina = 3*endu + 2*stre - 2*inte; //высчитывает базовую стамину
+    
+    base = stamina.GET() - Base.GET(); //считает разницу между базвовой и настоящей стаминой
+    Base.Change(3*EDU() + 2*STR() - 2*INT()); //высчитывает базовую стамину
     if (dosome > 0) //если dosome больше нуля, то...
     {
-        dosome -= bufinte; //от dosome высчитывается bufinte
-        dosome -= bufstre; //от dosome высчитывается bufinte
+        dosome -= BuffINT(); //от dosome высчитывается bufinte
+        dosome -= BuffSTR(); //от dosome высчитывается bufinte
         if (dosome <= 0) //если dosome получился равным нулю или меньше, то dosome приравнивается 1
         {
             dosome = 1;
@@ -151,18 +86,11 @@ void Person::calculate(int dosome) //высчитывает кол-во стам
         base -= dosome; //от base высчитывается значение dosome
     
     }
-    stamina = basestamina + base; //стамина приравнивается сумме базовой стамины и получившийся base
+    stamina.reboot();
+    stamina.Change(Base.GET() + base); //стамина приравнивается сумме базовой стамины и получившийся base
 }
 
-Person::Person()
+Game::Person::Person()
 {
-    endu = 0;
-    inte = 0;
-    stre = 0;
-    bufinte = 0;
-    bufendu = 1;
-    bufstre = 0;
-    stamina = 0;
-    basestamina = 0;
     base = 0;
 }
