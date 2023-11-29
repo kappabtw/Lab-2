@@ -12,14 +12,11 @@ class action
         std::string getName();
         void ChangeValue(int newValue);
         void ChangeStat(std::string newStat);
-        void MakeActive(); 
-        void MakePassive();
-
+        Stamina stamina;
         STATS Stats; 
     protected:
         std::string name;
         std::string stat;
         int value;
         int NeedStatForAction;
-        int IsActive;
 };

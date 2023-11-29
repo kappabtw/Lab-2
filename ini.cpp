@@ -25,5 +25,5 @@ zeroevent *event7 = new zeroevent{"sometext 7", event7};
 
 void settings() //настройка объектов
 {
-    wakeup.MakePassive();
+    
 }

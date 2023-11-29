@@ -23,6 +23,11 @@ void Game::Person::BaseStamina::Change(int count)
     ALLSTAMINA->at(index) = count;
 }
 
+void Game::Person::BaseStamina::reboot()
+{
+    ALLSTAMINA -> at(1) = 0;
+}
+
 void Game::Person::setName(string change)
 {
     nameperson = change; 
@@ -72,13 +77,12 @@ void Game::Person::startstamina() //считает базовую стамину
 
 void Game::Person::calculate(int dosome) //высчитывает кол-во стамины после дейсвтия, требующее стамины кол-ва dosome
 { 
-    
     base = stamina.GET() - Base.GET(); //считает разницу между базвовой и настоящей стаминой
     Base.Change(3*EDU() + 2*STR() - 2*INT()); //высчитывает базовую стамину
     if (dosome > 0) //если dosome больше нуля, то...
     {
-        dosome -= BuffINT(); //от dosome высчитывается bufinte
-        dosome -= BuffSTR(); //от dosome высчитывается bufinte
+        dosome -= BuffINT(); 
+        dosome -= BuffSTR(); 
         if (dosome <= 0) //если dosome получился равным нулю или меньше, то dosome приравнивается 1
         {
             dosome = 1;
@@ -86,8 +90,7 @@ void Game::Person::calculate(int dosome) //высчитывает кол-во с
         base -= dosome; //от base высчитывается значение dosome
     
     }
-    stamina.reboot();
-    stamina.Change(Base.GET() + base); //стамина приравнивается сумме базовой стамины и получившийся base
+    stamina.Change(Base.GET() + base -stamina.GET()); 
 }
 
 Game::Person::Person()

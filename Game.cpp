@@ -55,9 +55,11 @@ Game::Game(int newtickcount):tickcount(newtickcount)
     srand(time(0));
 }
 
-void Game::OnTheStart(std::string setName, int INT, int STR, int EDU)
+void Game::OnTheStart(std::string setName, int INT, int STR, int EDU) // работает
 {
     Player.Base.reboot();
     Player.stamina.reboot();
+    Player.stats.reboot(INT, STR, EDU);
     Player.startstamina();
+    
 }

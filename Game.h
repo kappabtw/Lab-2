@@ -22,7 +22,6 @@ class Game {
                 int BuffINT();
                 std::string getName();
                 void calculate(int spendingSTA);
-               // int getstamina();
                 void startstamina();
 
                 class BaseStamina: public Stamina
@@ -30,21 +29,22 @@ class Game {
                     public:
                         BaseStamina():index(1){};
                         void Change(int count) override;
+                        void reboot() override;
                     private:
                         const int index;
                 };
                 
-        private: 
-            std::string nameperson;// имя     
-            int INT();
-            int STR();
-            int EDU();
-            int STA();
-            int base;
-            BuffVector Buff;
-            BaseStamina Base;
-            Stamina stamina;
-            STATS stats;
+            private: 
+                std::string nameperson;// имя     
+                int INT();
+                int STR();
+                int EDU();
+                int STA();
+                int base;
+                BuffVector Buff;
+                BaseStamina Base;
+                Stamina stamina;
+                STATS stats;
         };
     private:
         int ticks; //всего тиков

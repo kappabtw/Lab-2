@@ -21,4 +21,5 @@ void start()
             break;
     }
     wakeup.DoAction();
+    game.newtick();
 }

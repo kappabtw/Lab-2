@@ -11,23 +11,22 @@ void action::ChangeStat(std::string newStat)
 
 bool action::DoAction()
 {
+
     
-    if (NeedStatForAction >= Stats.getStat(stat))
+    if ((stat != "STA")&&(NeedStatForAction >= Stats.getStat(stat)))
     {
         return false;
     }
-    Stats.plusStat(stat, value); 
-    return true;
+    if (stat == "STA")
+    {
+        stamina.Change(value);
+        return true;
+    }
+    else if (stat=="INT"||stat=="EDU"||stat=="STR")
+        Stats.plusStat(stat, value); 
+        return true;
+    return false;
 
-}
-void action::MakeActive() //делает действие активным
-{
-    IsActive = 1;
-}
-
-void action::MakePassive()
-{
-    IsActive = 0; //делает действие пассивным
 }
 
 int action::getValue()

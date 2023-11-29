@@ -1,7 +1,7 @@
+#pragma once
 #include <iostream>
 #include <vector>
 #include "vector.h"
-#pragma once
 
 std::vector<std::string> *zerovector = new std::vector<std::string>;
 std::vector<int> *buffvector = new std::vector<int>(3);
