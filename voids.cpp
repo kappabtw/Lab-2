@@ -1,17 +1,16 @@
 #include <iostream>
-using namespace std;
 #include <sstream>
 #include <limits>
 #pragma once
 
 int input() // вводимый пользователем символ приобразуется в число
 {
-    string in;
+    std::string in;
     int out;
-    stringstream container; // check
-    cin.clear();            // на случай, если предыдущий ввод завершился с ошибкой
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    cin >> in;
+    std::stringstream container; // check
+    std::cin.clear();            // на случай, если предыдущий ввод завершился с ошибкой
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin >> in;
     if (in.empty())
     {
         return false;

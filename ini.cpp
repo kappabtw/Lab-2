@@ -1,6 +1,5 @@
 #pragma once
 #include "action.cpp"
-#include "event.cpp"
 #include "item.cpp"
 #include "itemSTAT.cpp"
 #include "zeroevent.cpp"
@@ -10,7 +9,6 @@
 #include "voids.cpp"
 #include <cstring>
 
-STATS MainStat;
 Game game{4}; //todo агрегация
 itemSTA gre{"Gre", 4};
 location kitchen{"Kitchen"};
@@ -22,8 +20,3 @@ zeroevent *event4 = new zeroevent{"sometext 4", event4};
 zeroevent *event5 = new zeroevent{"sometext 5", event5};
 zeroevent *event6 = new zeroevent{"sometext 6", event6};
 zeroevent *event7 = new zeroevent{"sometext 7", event7};
-
-void settings() //настройка объектов
-{
-    
-}

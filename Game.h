@@ -21,7 +21,7 @@ class Game {
                 int BuffSTR();
                 int BuffINT();
                 std::string getName();
-                void calculate(int spendingSTA);
+                void calculate();
                 void startstamina();
 
                 class BaseStamina: public Stamina
@@ -51,4 +51,5 @@ class Game {
         const int tickcount; //через какое количество тиков восстанавливается стамина
         Person Player;
         zeroeventVector zeroEvents;
+        location currentloc{"GAMECURRENTLOCATION"};
 };

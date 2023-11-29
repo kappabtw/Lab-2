@@ -2,25 +2,25 @@
 
 void stats()
 {
-
+    kitchen.SetCurrentLocation();
     int res;
     std::string newName;
     int freestat = 10;
     int stat = 0;
     int newINT;
     int newSTR;
-    cout<< "Enter your nickname:\n" << endl;
-    cin>>newName;
+    std::cout<< "Enter your nickname:\n\n";
+    std::cin>>newName;
     while (newName.empty())
     {
-        getline(cin,newName);
+        getline(std::cin,newName);
     }
-    cout<< "\nYou have "<<freestat<<" free stat points. \nThere are three main characteristics: intelligence, strength and endurance." << endl;
-    cout << "They will change as the game progresses, but now you can choose the initial characteristics [min 1 , max 5]." << endl;
+    std::cout<< "\nYou have "<<freestat<<" free stat points. \nThere are three main characteristics: intelligence, strength and endurance.\n";
+    std::cout << "They will change as the game progresses, but now you can choose the initial characteristics [min 1 , max 5].\n";
     while (stat != 1)
     {
-        cin.clear();
-        cout<<"\nEnter your intelligence [1-5]:\n" << endl;
+        std::cin.clear();
+        std::cout<<"\nEnter your intelligence [1-5]:\n\n";
         res = input();
         switch(res)
         {
@@ -34,14 +34,14 @@ void stats()
                 stat++;
                 break;
             default: 
-                cout << "\nError. Try again" << endl;
+                std::cout << "\nError. Try again\n";
                 break;
         }
     }
 
     while (stat != 2) //Stre
     {
-        cout<<"\nEnter your strenght [1-5]:\n"<<endl;
+        std::cout<<"\nEnter your strenght [1-5]:\n\n";
         res = input();
         switch(res)
         {
@@ -58,7 +58,7 @@ void stats()
                 }
                 else
                 {
-                    cout<<"\nYou need more strenght...\n";
+                    std::cout<<"\nYou need more strenght...\n";
                     break;
                 }
             case 5:
@@ -71,12 +71,12 @@ void stats()
                 }
                 else 
                 {
-                    cout<<"You need some free stat points to endurance";
+                    std::cout<<"You need some free stat points to endurance";
                     break;
                 }   
             
             default:
-                cout << "\nError. Try again" << endl;
+                std::cout << "\nError. Try again\n";
                 break;
         }   
     }

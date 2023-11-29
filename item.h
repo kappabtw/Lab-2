@@ -9,6 +9,7 @@ class item
         std::string getName();
         std::string getStat();
         int getValue();
+        Stamina StaminaVector;
         STATS StatVector;
     protected:
         std::string stat;

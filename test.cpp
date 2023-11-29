@@ -2,9 +2,10 @@
 
 void test()
 {
-    cout<<"\n\nTesting...\n\nObject \"gre\"...";
-    cout<<"\n\nName: "<<gre.getName();
-    cout<<"\n\nStat: "<<gre.getStat();
-    cout<<"\n\nUsing object \"gre\"...";
+    std::cout<<"\n\nTesting...\n\nObject \"gre\"...";
+    std::cout<<"\n\nName: "<<gre.getName();
+    std::cout<<"\n\nStat: "<<gre.getStat();
+    std::cout<<"\n\nUsing object \"gre\"...";
     gre.useItem();
+    game.newtick();
 }

@@ -1,11 +1,13 @@
 #include <iostream>
-using namespace std;
 
 class location
 {
     public:
-        location(string);
-        string Name();
+        location(std::string);
+        std::string Name();
+        std::string GetCurrentLocation();
+        void SetCurrentLocation();
+        bool IsCurrentLocation();
     private:
-        string locationname;
+        std::string locationname;
 };

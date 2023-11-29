@@ -3,7 +3,15 @@
 
 void item::useItem()
 {
-    StatVector.plusStat(stat , value);
+    if (stat == "STA")
+    {
+        StaminaVector.Change(value);
+        return;
+    }
+    if((stat== "INT")&&(stat == "STR")&&(stat == "EDU"))
+        StatVector.plusStat(stat, value);
+        return;
+    std::cout<<"Nothing if used, wrong stat in item";
 }
 
 std::string item::getName()

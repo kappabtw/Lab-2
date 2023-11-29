@@ -25,22 +25,22 @@ void Game::Person::BaseStamina::Change(int count)
 
 void Game::Person::BaseStamina::reboot()
 {
-    ALLSTAMINA -> at(1) = 0;
+    ALLSTAMINA -> at(index) = 0;
 }
 
-void Game::Person::setName(string change)
+void Game::Person::setName(std::string change)
 {
     nameperson = change; 
 }
 
-string Game::Person::getName()
+std::string Game::Person::getName()
 {
     return nameperson;
 }
 
 int Game::Person::recoveringSTA() //если выносливость достигает максимального значения, то bufendu присваивается значение 2
 {
-    return Buff.getBuff("EDU");
+    return (Buff.getBuff("EDU") + BuffSTR() + BuffINT());
 }
 
 int Game::Person::BuffSTR() 
@@ -75,21 +75,10 @@ void Game::Person::startstamina() //считает базовую стамину
     stamina.Change(base);
 }
 
-void Game::Person::calculate(int dosome) //высчитывает кол-во стамины после дейсвтия, требующее стамины кол-ва dosome
+void Game::Person::calculate() //высчитывает кол-во стамины после дейсвтия, требующее стамины кол-ва dosome
 { 
     base = stamina.GET() - Base.GET(); //считает разницу между базвовой и настоящей стаминой
     Base.Change(3*EDU() + 2*STR() - 2*INT()); //высчитывает базовую стамину
-    if (dosome > 0) //если dosome больше нуля, то...
-    {
-        dosome -= BuffINT(); 
-        dosome -= BuffSTR(); 
-        if (dosome <= 0) //если dosome получился равным нулю или меньше, то dosome приравнивается 1
-        {
-            dosome = 1;
-        }
-        base -= dosome; //от base высчитывается значение dosome
-    
-    }
     stamina.Change(Base.GET() + base -stamina.GET()); 
 }
 

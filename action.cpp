@@ -25,6 +25,7 @@ bool action::DoAction()
     else if (stat=="INT"||stat=="EDU"||stat=="STR")
         Stats.plusStat(stat, value); 
         return true;
+    std::cerr<<"\nWrong stat in action]\n";
     return false;
 
 }

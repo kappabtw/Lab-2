@@ -1,13 +1,12 @@
-#include "ini.cpp"
-#include "stats1.cpp"
-#include "start.cpp"
+#include "ini.cpp" //ядро
+#include "1Module.cpp"
+#include "2Module.cpp"
 #include "test.cpp"
 
 int main()
 {
-    settings();
     stats();
     start();
-    //test();
+    test();
     game.endgame(1);
 }
