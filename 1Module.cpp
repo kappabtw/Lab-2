@@ -16,12 +16,14 @@ void stats()
         getline(std::cin,newName);
     }
     std::cout<< "\nYou have "<<freestat<<" free stat points. \nThere are three main characteristics: intelligence, strength and endurance.\n";
+    std::cout<< "Stamina will be restored every "<<game.getCountOfMaxTicks()<<" ticks.\n";
+    std::cout<< "For each characteristic that reaches its maximum value[5], 1 more stamina is restored\n";
     std::cout << "They will change as the game progresses, but now you can choose the initial characteristics [min 1 , max 5].\n";
     while (stat != 1)
     {
         std::cin.clear();
         std::cout<<"\nEnter your intelligence [1-5]:\n\n";
-        res = input();
+        res = game.input();
         switch(res)
         {
             case 1:
@@ -42,7 +44,7 @@ void stats()
     while (stat != 2) //Stre
     {
         std::cout<<"\nEnter your strenght [1-5]:\n\n";
-        res = input();
+        res = game.input();
         switch(res)
         {
             case 1:

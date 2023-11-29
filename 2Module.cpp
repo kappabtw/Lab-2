@@ -2,7 +2,7 @@
 
 void start()
 {
-    switch (random(1, 6))
+    switch (game.random(1, 6))
     {
         case 1:
         case 2:

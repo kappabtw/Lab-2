@@ -40,7 +40,20 @@ std::string Game::Person::getName()
 
 int Game::Person::recoveringSTA() //если выносливость достигает максимального значения, то bufendu присваивается значение 2
 {
-    return (Buff.getBuff("EDU") + BuffSTR() + BuffINT());
+    return (BuffEDU() + BuffSTR() + BuffINT());
+}
+
+int Game::Person::BuffEDU() 
+{
+    if (EDU() == 5)
+    {
+        Buff.setBuff("EDU", 2);
+    }
+    else if (EDU() != 5)
+    {
+        Buff.setBuff("EDU", 1);
+    }
+    return Buff.getBuff("EDU");
 }
 
 int Game::Person::BuffSTR() 

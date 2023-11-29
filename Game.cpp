@@ -1,7 +1,38 @@
 #pragma once
 #include <ctime>
-#include "voids.cpp"
+#include <ctime>
+#include <sstream>
+#include <limits>
 #include "Game.h"
+
+int Game::random(int min, int max) // случайное число от a до b включительно
+{
+    int output = min + rand() % max;
+    return output;
+}
+
+int Game::input() // вводимый пользователем символ приобразуется в число
+{
+    std::string in;
+    int out;
+    std::stringstream container; // check
+    std::cin.clear();            // на случай, если предыдущий ввод завершился с ошибкой
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin >> in;
+    if (in.empty())
+    {
+        return false;
+    }
+    container << in;
+    container >> out;
+    container.clear();
+    return out;
+}
+int Game::getCountOfMaxTicks()
+{
+    return maxtickcount;
+}
+
 
 void Game::newtick()
 {
@@ -16,7 +47,7 @@ void Game::newtick()
         std::cout<<"\n"<<zeroEvents.getEvent(index); 
     }
     ticks++;
-    if (ticks == tickcount)
+    if (ticks == maxtickcount)
     {
         Player.stamina.Change(Player.recoveringSTA());
         std::cout<<"\nStamina is recovered! ["<<Player.recoveringSTA()<<"]";
@@ -28,19 +59,19 @@ void Game::newtick()
     std::cout<<"----------------------------------------\n";
 }
 
-void Game::endgame(int code = 0)
+void Game::endgame(int NumOfEnd= 0)
 {
         if (zeroEvents.DeleteOrCheck("check") == false)
             zeroEvents.DeleteOrCheck();
-    switch (code)
+    switch (NumOfEnd)
     {
         case 1:
             std::cout<<"\nIn development\n";
             break;
         default:    
             std::cout<<"\nNot enough stamina for life. You dead. Input something to exit([1]Info).\n"; 
-            int num = input();
-            switch(num)
+            int info = input();
+            switch(info)
             {
                 case 1:
                     std::cout<<"\nInfo\n";
@@ -51,7 +82,7 @@ void Game::endgame(int code = 0)
     exit(0);
 }
 
-Game::Game(int newtickcount):tickcount(newtickcount)
+Game::Game(int newtickcount):maxtickcount(newtickcount)
 {
     ticks = 0;
     srand(time(0));

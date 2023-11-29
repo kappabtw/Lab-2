@@ -6,7 +6,6 @@
 #include "location.cpp"
 #include "Person.cpp"
 #include "Game.cpp"
-#include "voids.cpp"
 #include <cstring>
 
 Game game{4}; //todo агрегация

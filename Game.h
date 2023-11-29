@@ -7,8 +7,11 @@ class Game {
     public: 
 
         Game(int newtickcount);
+        int getCountOfMaxTicks();
+        int input();
+        int random(int min, int max);
         void newtick(); 
-        void endgame(int type);
+        void endgame(int NumOfEnd);
         void OnTheStart(std::string newName, int INT, int STR, int EDU);
 
         class Person {  
@@ -18,6 +21,7 @@ class Game {
                 Person();
                 void setName(std::string newName);
                 int recoveringSTA(); 
+                int BuffEDU();
                 int BuffSTR();
                 int BuffINT();
                 std::string getName();
@@ -48,7 +52,7 @@ class Game {
         };
     private:
         int ticks; //всего тиков
-        const int tickcount; //через какое количество тиков восстанавливается стамина
+        const int maxtickcount; //через какое количество тиков восстанавливается стамина
         Person Player;
         zeroeventVector zeroEvents;
         location currentloc{"GAMECURRENTLOCATION"};
