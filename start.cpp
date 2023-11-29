@@ -22,4 +22,8 @@ void start()
     }
     wakeup.DoAction();
     game.newtick();
+    wakeup.DoAction();
+    game.newtick();
+    wakeup.DoAction();
+    game.newtick();
 }

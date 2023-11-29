@@ -19,11 +19,12 @@ void Game::newtick()
     if (ticks == tickcount)
     {
         Player.stamina.Change(Player.recoveringSTA());
+        cout<<"\nStamina is recovered! ["<<Player.recoveringSTA()<<"]";
         ticks = 0;
     }
-    cout<<"\n----------------------------------------"<<endl;
-    cout<<"[STA - "<<Player.stamina.GET()<<"] [INT - "<<Player.stats.getStat("INT")<<"] [STR - "<<Player.stats.getStat("STR")<<"] [EDU - "<<Player.stats.getStat("EDU")<<"]"<<endl;
-    cout<<"----------------------------------------"<<endl;
+    std::cout<<"\n----------------------------------------"<<endl;
+    std::cout<<"[STA - "<<Player.stamina.GET()<<"] [INT - "<<Player.stats.getStat("INT")<<"] [STR - "<<Player.stats.getStat("STR")<<"] [EDU - "<<Player.stats.getStat("EDU")<<"]"<<endl;
+    std::cout<<"----------------------------------------"<<endl;
 }
 
 void Game::endgame(int code = 0)
