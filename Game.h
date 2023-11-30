@@ -1,4 +1,3 @@
-#pragma once
 #include "zeroevent.cpp"
 #include <iostream>
 

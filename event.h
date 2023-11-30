@@ -1,5 +1,4 @@
 #include <iostream>
-#pragma once
 
 class event//неподконтрольное событие, которое может случается во время newtick
 {
