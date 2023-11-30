@@ -2,10 +2,10 @@
 #include "zeroevent.h"
 #include "vector.cpp"
 
-zeroevent::zeroevent(std::string ename, auto* ptr):event(ename, 0)
+zeroevent::zeroevent(std::string ename, zeroevent *somezero):event(ename, 0)
 {   
     zeroeventVector zero;
     zero.push(ename);
-    delete[] ptr;
-    delete ptr;
+    delete[] somezero;
+    delete somezero;
 }
