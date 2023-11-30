@@ -26,12 +26,9 @@ class BuffVector
 class Stamina
 {
     public:
-        Stamina():index(0){};
         virtual void Change(int count);
         virtual void reboot();
-        int GET();
-    private:
-        const int index;
+        virtual int GET();
         
 
 };

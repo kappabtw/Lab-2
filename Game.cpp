@@ -37,11 +37,11 @@ int Game::getCountOfMaxTicks()
 void Game::newtick()
 {
     Player.calculate();
-    if (Player.stamina.GET() <= 0) //если во время нового тика стамина игрока <= 0, то вызвывается endgame с аргументом 0
+    if (Player.stamina.GET() <= 0)
     {
         endgame(0);
     }
-    if (zeroEvents.DeleteOrCheck("check") == false) //если vectorevents не удалён, то каждый тик происходит случайное событие без влияния на очки статистик
+    if (zeroEvents.DeleteOrCheck("check") == false)
     {
         int index = random(zeroEvents.minIndex() , zeroEvents.maxIndex());
         std::cout<<"\n"<<zeroEvents.getEvent(index); 
@@ -53,10 +53,17 @@ void Game::newtick()
         std::cout<<"\nStamina is recovered! ["<<Player.recoveringSTA()<<"]";
         ticks = 0;
     }
+    interface();
+}
+
+
+void Game::interface()
+{
     std::cout<<"\nCurrent Location - ["<<currentloc.GetCurrentLocation()<<"]\n";
     std::cout<<"\n----------------------------------------\n";
     std::cout<<"[STA - "<<Player.stamina.GET()<<"] [INT - "<<Player.stats.getStat("INT")<<"] [STR - "<<Player.stats.getStat("STR")<<"] [EDU - "<<Player.stats.getStat("EDU")<<"]\n";
     std::cout<<"----------------------------------------\n";
+
 }
 
 void Game::endgame(int NumOfEnd= 0)

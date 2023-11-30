@@ -8,9 +8,11 @@ void item::useItem()
         StaminaVector.Change(value);
         return;
     }
-    if((stat== "INT")&&(stat == "STR")&&(stat == "EDU"))
+    if((stat== "INT")||(stat == "STR")||(stat == "EDU"))
+    {
         StatVector.plusStat(stat, value);
         return;
+    }
     std::cout<<"Nothing if used, wrong stat in item";
 }
 

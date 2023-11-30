@@ -5,7 +5,7 @@
 
 std::vector<std::string> *zerovector = new std::vector<std::string>;
 std::vector<int> *buffvector = new std::vector<int>(3);
-std::vector<int> *ALLSTAMINA = new std::vector<int>(2);
+std::vector<int> *ALLSTAMINA = new std::vector<int>(1);
 std::vector<int> *ALLSTATS = new std::vector<int>(3);
 
 
@@ -85,14 +85,14 @@ int BuffVector::getBuff(std::string STAT)
 
 void Stamina::Change(int count)
 {
-    int beforeSTA= ALLSTAMINA -> at(index);
+    int beforeSTA= ALLSTAMINA -> at(0);
     int sum = beforeSTA+count;
-    ALLSTAMINA->at(index) = sum;
+    ALLSTAMINA->at(0) = sum;
 }
 
 int Stamina::GET()
 {
-    return ALLSTAMINA->at(index);
+    return ALLSTAMINA->at(0);
 }
 
 void Stamina::reboot()

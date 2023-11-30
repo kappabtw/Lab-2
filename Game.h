@@ -7,6 +7,7 @@ class Game {
     public: 
 
         Game(int newtickcount);
+        void interface();
         int getCountOfMaxTicks();
         int input();
         int random(int min, int max);
@@ -31,11 +32,9 @@ class Game {
                 class BaseStamina: public Stamina
                 {
                     public:
-                        BaseStamina():index(1){};
                         void Change(int count) override;
                         void reboot() override;
-                    private:
-                        const int index;
+                        int GET() override;
                 };
                 
             private: 

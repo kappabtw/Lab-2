@@ -20,7 +20,8 @@ void start()
             std::cout<<"You slept for 4 hours and feel terrible => "<<wakeup.getValue()<<" to "<<wakeup.getStat()<<std::endl;
             break;
     }
-    wakeup.DoAction();
+    
+    wakeup.DoAction();    //для проверки восстановления стамины
     game.newtick();
     wakeup.DoAction();
     game.newtick();

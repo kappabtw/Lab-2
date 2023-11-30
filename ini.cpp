@@ -9,7 +9,7 @@
 #include <cstring>
 
 Game game{4}; //todo агрегация
-itemSTA gre{"Gre", 4};
+itemINT gre{"Vkusnaya grechka", 2};
 location kitchen{"Kitchen"};
 action wakeup{"wakeup", "STA", 4};
 zeroevent *event1 = new zeroevent{"sometext 1", event1};

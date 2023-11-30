@@ -1,18 +1,36 @@
 #pragma once
 #include "Game.cpp"
 
+std::vector<int> *BASESTAMINA = new std::vector<int>(1);
+
 int Game::Person::INT()
 {
+    int getter = stats.getStat("INT");
+    if (getter < 1)
+        stats.setStat("INT", 1);
+    else if (getter > 5)
+        stats.setStat("INT", 5);
     return stats.getStat("INT");
 }
 int Game::Person::STR()
 {
+    int getter = stats.getStat("STR");
+    if (getter < 1)
+        stats.setStat("STR", 1);
+    else if (getter > 5)
+        stats.setStat("STR", 5);
     return stats.getStat("STR");
 }
 int Game::Person::EDU()
 {
+    int getter = stats.getStat("EDU");
+    if (getter < 1)
+        stats.setStat("EDU", 1);
+    else if (getter > 5)
+        stats.setStat("EDU", 5);
     return stats.getStat("EDU");
 }
+
 int Game::Person::STA()
 {
     return (stamina.GET());
@@ -20,12 +38,17 @@ int Game::Person::STA()
 
 void Game::Person::BaseStamina::Change(int count)
 {
-    ALLSTAMINA->at(index) = count;
+    BASESTAMINA->at(0) = count;
 }
 
 void Game::Person::BaseStamina::reboot()
 {
-    ALLSTAMINA -> at(index) = 0;
+    BASESTAMINA -> at(0) = 0;
+}
+
+int Game::Person::BaseStamina::GET()
+{
+    return BASESTAMINA->at(0);
 }
 
 void Game::Person::setName(std::string change)
@@ -38,7 +61,7 @@ std::string Game::Person::getName()
     return nameperson;
 }
 
-int Game::Person::recoveringSTA() //если выносливость достигает максимального значения, то bufendu присваивается значение 2
+int Game::Person::recoveringSTA()
 {
     return (BuffEDU() + BuffSTR() + BuffINT());
 }
@@ -82,17 +105,18 @@ int Game::Person::BuffINT()
     return Buff.getBuff("INT");
 }
 
-void Game::Person::startstamina() //считает базовую стамину, после чего присваивает значение базовой текущей стамине
+void Game::Person::startstamina()
 {
-    base = 3*EDU() + 2*STR() - 2*INT();
-    stamina.Change(base);
+    Base.Change(3*EDU() + 2*STR() - 2*INT());
+    stamina.Change(Base.GET());
 }
 
 void Game::Person::calculate() //высчитывает кол-во стамины после дейсвтия, требующее стамины кол-ва dosome
 { 
-    base = stamina.GET() - Base.GET(); //считает разницу между базвовой и настоящей стаминой
+    base = STA() - Base.GET(); //считает разницу между базвовой и настоящей стаминой
     Base.Change(3*EDU() + 2*STR() - 2*INT()); //высчитывает базовую стамину
-    stamina.Change(Base.GET() + base -stamina.GET()); 
+    stamina.reboot();
+    stamina.Change(Base.GET() + base); 
 }
 
 Game::Person::Person()
