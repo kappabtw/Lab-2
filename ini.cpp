@@ -2,7 +2,7 @@
 #include "action.cpp"
 #include "item.cpp"
 #include "itemSTAT.cpp"
-#include "zeroevent.cpp"
+#include "zeroevent.h"
 #include "location.cpp"
 #include "Person.cpp"
 #include "Game.cpp"

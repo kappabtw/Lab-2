@@ -1,7 +1,16 @@
-#include "event.h"
+#pragma once
+#include "vector.cpp"
 
-class zeroevent: public event //событие без изменений stat
+class zeroevent
 {
     public:
-        zeroevent(std::string ename, zeroevent *somezero);
+        zeroevent(std::string ename, zeroevent *somezero):name(ename)
+        {   
+            zeroeventVector zero;
+            zero.push(ename);
+            delete[] somezero;
+            delete somezero;
+        }
+    private:
+        std::string name;
 };
