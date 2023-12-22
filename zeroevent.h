@@ -1,6 +1,7 @@
 #pragma once
 #include "vector.cpp"
 
+/* Название совершенно неясное, причина существования тоже */
 class zeroevent
 {
     public:

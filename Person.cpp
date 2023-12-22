@@ -1,10 +1,15 @@
 #pragma once
+/* Такого быть не должно, включать нужно только файлы .h. 
+ * Непонятна вообще причина, почему ты решил Person определять 
+ * внутри класса Game */
 #include "Game.cpp"
-
+/* Кто это удаляет? Не надо делать глобальные переменные, всё должно быть полями
+ * какого-то класса. */
 std::vector<int> *BASESTAMINA = new std::vector<int>(1);
 
 int Game::Person::INT()
 {
+    /* Вот тут вообще странная логика с точки зрения игры */
     int getter = stats.getStat("INT");
     if (getter < 1)
         stats.setStat("INT", 1);
