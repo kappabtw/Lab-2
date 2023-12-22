@@ -3,6 +3,7 @@
 #include <vector>
 #include "vector.h"
 
+/* А кто это удаляет вообще? */
 std::vector<std::string> *zerovector = new std::vector<std::string>;
 std::vector<int> *buffvector = new std::vector<int>(3);
 std::vector<int> *ALLSTAMINA = new std::vector<int>(1);
@@ -11,6 +12,7 @@ std::vector<int> *ALLSTATS = new std::vector<int>(3);
 
 BuffVector::BuffVector()
 {
+    /* В чем разница между at и []?*/
     buffvector->at(0) = 0; //INT
     buffvector->at(1) = 0; //STR
     buffvector->at(2) = 1; //EDU
@@ -24,6 +26,8 @@ bool zeroeventVector::DeleteOrCheck(std::string argument = "delete")
     }
     else if (argument == "delete")
     {
+        /* Нельзя очищать память, выделенную с помощью new, при помощи
+         * free, это сишная функция. */
         free(zerovector); //очищает память, выделенную под zerovector
         IsDelete = true;
         return true;

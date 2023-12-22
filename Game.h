@@ -13,7 +13,7 @@ class Game {
         void newtick(); 
         void endgame(int NumOfEnd);
         void OnTheStart(std::string newName, int INT, int STR, int EDU);
-
+        /* Непонятно, почему ты определил это здесь. */
         class Person {  
             friend class Game;
             public:

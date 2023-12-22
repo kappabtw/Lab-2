@@ -8,6 +8,8 @@
 #include "Game.cpp"
 #include <cstring>
 
+/* Этот файл страшен. Выделениями памяти, наличием глобальных переменных,
+ * смысл которых очень сложно проследить. Так делять не нужно */
 Game game{4}; //todo агрегация
 itemINT gre{"Vkusnaya grechka", 2};
 location kitchen{"Kitchen"};

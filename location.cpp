@@ -1,6 +1,7 @@
 #pragma once
 #include "location.h"
-
+/* Нигде такого быть не должно. Эта информация должна храниться либо у игрока,
+ * либо у игры */
 std::vector<std::string> *CURRENTLOCATION = new std::vector<std::string>(1);
 
 std::string location::Name()
